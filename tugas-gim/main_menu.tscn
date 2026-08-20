@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bsldm57s4ga76"]
+
+[ext_resource type="Script" uid="uid://cloe4ogtas0sc" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control" unique_id=1475638660]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2072683143]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=2036093542]
+custom_minimum_size = Vector2(250, 55)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1219815194]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "TUGAS GIM"
+
+[node name="StratButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1474310402]
+layout_mode = 2
+text = "MULAI"
+
+[node name="CreditButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1410521307]
+layout_mode = 2
+text = "CREDIT
+"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1690142586]
+layout_mode = 2
+text = "KELUAR
+"
+
+[node name="Credits" type="Panel" parent="." unique_id=1700435398]
+visible = false
+layout_mode = 0
+offset_left = 723.0
+offset_top = 138.0
+offset_right = 1125.0
+offset_bottom = 525.0
+
+[node name="CreditsText" type="Label" parent="Credits" unique_id=54260734]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 20.0
+offset_right = 315.0
+offset_bottom = 355.0
+text = "CREDITS
+
+Programmer / Technical Lead
+Malik
+
+AI & System Programmer
+Abil
+
+3D Artist / Level Designer
+Taza
+
+Game Artist / Designer
+Rafka"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditButton" to="." method="_on_credit_button_pressed"]

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cfgxbbxtpgyri"]
+
+[ext_resource type="Script" uid="uid://b3de5cqjvchip" path="res://player.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://etq7xxtlipqi" path="res://inventory.gd" id="2_noarx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
+height = 4.4438477
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bx8n8"]
+height = 4.319824
+
+[sub_resource type="BoxMesh" id="BoxMesh_5h11f"]
+size = Vector3(11.59314, 0.43115234, 17.103516)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5h11f"]
+albedo_color = Color(0.16915785, 0.15183854, 0.17527056, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5h11f"]
+size = Vector3(10.879883, 1, 17.70581)
+
+[node name="Node3D" type="Node3D" unique_id=1058751465]
+
+[node name="player" type="CharacterBody3D" parent="." unique_id=261446515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.505777, 2.7726607, -5.7093344)
+script = ExtResource("1_a202f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=482923750]
+transform = Transform3D(0.5387999, 0, -0.8424338, 0, 1, 0, 0.8424338, 0, 0.5387999, 0.0084581375, 0.47555113, 1.7320771)
+shape = SubResource("CapsuleShape3D_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=1633719733]
+transform = Transform3D(0.5387999, 0, -0.8424338, 0, 1, 0, 0.8424338, 0, 0.5387999, 0.0084581375, 0.5299945, 1.7320771)
+mesh = SubResource("CapsuleMesh_bx8n8")
+
+[node name="Camera3D" type="Camera3D" parent="player" unique_id=114854879]
+transform = Transform3D(0.99959123, 0.027738163, 0.006926157, -0.02780586, 0.9995646, 0.009876897, -0.006649174, -0.010065447, 0.9999273, -0.111867905, 1.8274899, 1.7619028)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1106088826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29657, 0.6742263, -8.051758)
+mesh = SubResource("BoxMesh_5h11f")
+surface_material_override/0 = SubResource("StandardMaterial3D_5h11f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1698271258]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1555350568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9399414, 0.3525691, -7.9432373)
+shape = SubResource("BoxShape3D_5h11f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1207247848]
+transform = Transform3D(0.9299035, 0.22832678, 0.28835133, -0.36200133, 0.4294551, 0.82735926, 0.06507433, -0.87374777, 0.48200637, 5.597399, 4.4394426, -1.1305218)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=198741761]
+script = ExtResource("2_noarx")
+
+[node name="Inventory" type="Panel" parent="CanvasLayer" unique_id=49793756]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InventoryText" type="Label" parent="CanvasLayer/Inventory" unique_id=299389962]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "INVENTORY
+
+Belum ada item"
