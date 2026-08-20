@@ -1,0 +1,7 @@
+# Blender Backup & Temp Files
+*.blend1
+*.blend2
+*.blend3
+
+# Cache directories
+/cache/
