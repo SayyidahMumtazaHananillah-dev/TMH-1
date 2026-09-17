@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://btxm0e54humjs"]
+
+[ext_resource type="PackedScene" uid="uid://blunvyqut03ak" path="res://assets/kusen_pintu.tscn" id="1_petm5"]
+[ext_resource type="Texture2D" uid="uid://8lb51y5yrx20" path="res://assets/jendela_coated_pine_diff_4k.jpg" id="2_n8lal"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0oliw"]
+albedo_texture = ExtResource("2_n8lal")
+
+[node name="kusen_pintu" instance=ExtResource("1_petm5")]
+surface_material_override/0 = SubResource("StandardMaterial3D_0oliw")

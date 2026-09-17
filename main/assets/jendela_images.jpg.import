@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cbe3qcxq3uc7m"
+path.s3tc="res://.godot/imported/jendela_images.jpg-91e5f66de8d6454827e0c63371ccff24.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "61b51e6a1247f2e24497ed39d3af2f1a"
+}
+
+[deps]
+
+source_file="res://assets/jendela_images.jpg"
+dest_files=["res://.godot/imported/jendela_images.jpg-91e5f66de8d6454827e0c63371ccff24.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

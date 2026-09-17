@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsfiywwdmfu0i"]
+
+[ext_resource type="Script" uid="uid://v1eu6w7fu4kb" path="res://character_body_3d.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qnost"]
+radius = 0.2
+height = 1.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wnkbs"]
+radius = 0.2
+height = 1.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4flbx"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_qnost")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_wnkbs")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999998, 0.00066027, 0.00168713, -0.000675545, 0.999959, 0.00906971, -0.00168107, -0.00907084, 0.999957, 0, 0.788148, -0.138008)
+fov = 30.173
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00125217, 2.26993, 1.13083)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(-0.999999, -0.00135103, -1.23415e-05, -0.00135104, 0.999835, 0.0181387, -1.21668e-05, 0.0181387, -0.999836, 0, 0, 0)
+target_position = Vector3(0, 0, 1.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_4flbx")
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -581.0
+offset_top = -329.0
+offset_right = -571.0
+offset_bottom = -319.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

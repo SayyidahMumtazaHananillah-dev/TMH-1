@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://tcsaegcx0ogi"]
+
+[ext_resource type="PackedScene" uid="uid://cps30ykgqkkfn" path="res://assets/lantaiLapangan.glb" id="1_ou6f2"]
+
+[node name="lantaiLapangan" instance=ExtResource("1_ou6f2")]

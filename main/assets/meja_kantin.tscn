@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyyqqfw2bh7k1"]
+
+[ext_resource type="PackedScene" uid="uid://d0qmvy0lq0ctp" path="res://assets/meja_mm.tscn" id="1_crjac"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x776a"]
+blend_mode = 1
+
+[node name="meja_mm" instance=ExtResource("1_crjac")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_x776a")

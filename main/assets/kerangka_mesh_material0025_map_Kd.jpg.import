@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://budvsnu4xwuel"
+path.s3tc="res://.godot/imported/kerangka_mesh_material0025_map_Kd.jpg-86272fab18e805d6e62ee0bf78ff621f.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "6a88d9e523be27a0acbfb80d1fb0eb46"
+}
+
+[deps]
+
+source_file="res://assets/kerangka_mesh_material0025_map_Kd.jpg"
+dest_files=["res://.godot/imported/kerangka_mesh_material0025_map_Kd.jpg-86272fab18e805d6e62ee0bf78ff621f.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

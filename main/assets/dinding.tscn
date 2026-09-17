@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=4 uid="uid://be6epnnhqgt2t"]
+
+[ext_resource type="Texture2D" uid="uid://dvqb5mde5n7bk" path="res://assets/kerangka_white_stucco_diff_4k.jpg" id="1_xvwsw"]
+[ext_resource type="Texture2D" uid="uid://cu7o7c2mm5id" path="res://assets/kerangka_white_stucco_rough_4k.jpg" id="2_bblak"]
+[ext_resource type="Texture2D" uid="uid://y2v6o8g7gxqw" path="res://assets/kerangka_white_stucco_nor_gl_4k.jpg" id="3_gofi6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2x5d3"]
+resource_name = "dinding hijau"
+cull_mode = 2
+albedo_texture = ExtResource("1_xvwsw")
+metallic_texture = ExtResource("2_bblak")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_bblak")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_gofi6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ijr0"]
+resource_name = "dinding oren"
+cull_mode = 2
+albedo_texture = ExtResource("1_xvwsw")
+metallic_texture = ExtResource("2_bblak")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_bblak")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_gofi6")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_awxgk"]
+_surfaces = [{
+"aabb": AABB(-1, -0.164264, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAwAEAAIAAAAFAAEABQADAAEABQAAAAYABwAEAAMABQAHAAMABwAGAAQABQAGAAcA"),
+"name": "dinding hijau",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAA/////wAAAAD///////8AAAAAAAAAAAAA//8AAP//AAD//wAAAAAAAA==")
+}, {
+"aabb": AABB(-1, -0.164264, 1, 2, 2, 1e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "dinding oren",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAAAAAAP//AAAAAP////8AAAAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pl6j0"]
+resource_name = "kerangka_Cube_010"
+_surfaces = [{
+"aabb": AABB(-1, -0.164264, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//x//f/9f/z//X/9//x//P/+f/3//3/8//9//f/+f/z8="),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEA"),
+"material": SubResource("StandardMaterial3D_2x5d3"),
+"name": "dinding hijau",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TVAAAAAAAA/7///wAA////v///AAAAAP+/AAAAAP///7//////AAD//wAA////////AAD//wAA/////////////1TVVNVU1VTVVNVU1VTVVNX/v/+//7//v/+//7//v/+/qiqqKqoqqiqqKqoqqiqqKgAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}, {
+"aabb": AABB(-1, -0.164264, 1, 2, 2, 1e-05),
+"attribute_data": PackedByteArray("/1//P/+fAAD/n/8//18AAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_0ijr0"),
+"name": "dinding oren",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAA/78AAP//AAD/v/////8AAP+/AAAAAAAA/7//////////////////////")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_awxgk")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5361v"]
+data = PackedVector3Array(-1, -0.164264, 1, -1, 1.83574, -1, -1, 1.83574, 1, -1, -0.164264, 1, -1, -0.164264, -1, -1, 1.83574, -1, -1, -0.164264, -1, 1, 1.83574, -1, -1, 1.83574, -1, -1, -0.164264, -1, 1, -0.164264, -1, 1, 1.83574, -1, 1, -0.164264, -1, 1, 1.83574, 1, 1, 1.83574, -1, 1, -0.164264, -1, 1, -0.164264, 1, 1, 1.83574, 1, -1, -0.164264, -1, 1, -0.164264, 1, 1, -0.164264, -1, -1, -0.164264, -1, -1, -0.164264, 1, 1, -0.164264, 1, 1, 1.83574, -1, -1, 1.83574, 1, -1, 1.83574, -1, 1, 1.83574, -1, 1, 1.83574, 1, -1, 1.83574, 1, 1, -0.164264, 1, -1, 1.83574, 1, 1, 1.83574, 1, 1, -0.164264, 1, -1, -0.164264, 1, -1, 1.83574, 1)
+
+[node name="dinding" type="MeshInstance3D"]
+transform = Transform3D(2, 0, 0, 0, 1.75, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_pl6j0")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5361v")

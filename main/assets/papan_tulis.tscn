@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=4 uid="uid://ctqau5270ltbf"]
+
+[ext_resource type="Texture2D" uid="uid://bw661y30vtdvr" path="res://assets/kerangka_Metal055A.jpg" id="1_ctvoy"]
+[ext_resource type="Texture2D" uid="uid://dig6n6ohjykn0" path="res://assets/kerangka_Metal055A_4K-JPG_Metalness-Metal055A_4K-JPG_Roughness.jpg" id="2_r3ee2"]
+[ext_resource type="Texture2D" uid="uid://duagosqfb7fmr" path="res://assets/kerangka_Metal055A_4K-JPG_NormalGL.jpg" id="3_rjakt"]
+[ext_resource type="Texture2D" uid="uid://b8aorg6w4nn53" path="res://assets/kerangka_Screenshot 2026-09-03 075642.jpg" id="4_n7evj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr0f6"]
+resource_name = "besi putih"
+cull_mode = 2
+albedo_texture = ExtResource("1_ctvoy")
+metallic = 1.0
+metallic_texture = ExtResource("2_r3ee2")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_r3ee2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_rjakt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsmt8"]
+resource_name = "papan tulis"
+cull_mode = 2
+albedo_texture = ExtResource("4_n7evj")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0oecf"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 102,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAAAEAAEABAAFAAEAAQAFAAMABAAGAAUABgADAAUAAAAGAAQABgAHAAMAAAAHAAYACAACAAMACQAAAAIACQACAAgACgAAAAkACgAHAAAACwADAAcACwAHAAoACAADAAsACQAMAAoACAANAAkACQANAAwACwAOAAgACAAOAA0ACgAPAAsACgAMAA8ACwAPAA4ADQAQAAwADAAQABEADAARAA8ADQASABAADgASAA0ADwARABMADgATABIADwATAA4A"),
+"name": "besi putih",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("AAAAAAAAAAD/////AAAAAAAA//8AAAAAAAD/////AAD//wAAAAAAAP///////wAA//8AAP//AAAAAAAA//8AAAAASfi1BwAAAAC1B7UHAAAAALUHSfgAAAAASfhJ+AAAGALNCTH2AAAYAs0JzQkAABgCMfbNCQAAGAIx9jH2AACyQc0JMfYAALJBMfYx9gAAskHNCc0JAACyQTH2zQkAAA==")
+}, {
+"aabb": AABB(-0.486745, -0.923416, -0.923416, 1e-05, 1.84683, 1.84683),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "papan tulis",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3nf62"]
+resource_name = "kerangka_Cube_020"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/1//v/+f/3//n/+//1//f/9f/3//n/8//5//f/9f/z//X/8//58AAP+f/z//XwAA/x//f/9f/z//X/9//x//P/+f/3//3/8//9//f/+f/z/sYezBcmKL/exhEf5yYnLC7GER/oydi/0SnhH+cmKL/RKeEf6MnXLCEp7swYydi/0SnuzBcmJywuxh7MGMnXLCcmJywnJii/1yYov9cmJywuxhEf7/X/+/7GHswf+f/7//X///Ep7swRKeEf7/n///cmKL/Yydi/2MnYv9cmKL/Yydi/2MnXLCjJ1ywoydi/2MnXLCcmJywnJicsKMnXLC"),
+"format": 34896613399,
+"index_count": 102,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKgApACsAKAAsACkAKgArAC0ALgAsACgALQArAC8ALgAvACwALQAvAC4AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkA"),
+"material": SubResource("StandardMaterial3D_pr0f6"),
+"name": "besi putih",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("AAAAAAAA////////AAD//wAA//8AAP////8AAAAA/////wAAAABU1f///////1TV/////wAAVNX//wAA//9U1f//AAD///+/AAD//////7//////////vwAAAAD///+/AAAAAAAA/7///wAA////v///AAAAAP+/AAAAAP///7//////AAD//wAA////////AAD//wAA/////////////wAAtQe1B/zFGALNCTH2/MUAALUHSfj8xRgCzQnNCfzFAAC1B0n4qukYAjH2Mfaq6QAASfhJ+KrpGALNCTH2qukAAEn4Sfiq6RgCMfbNCarpAABJ+LUHqukYAjH2Mfaq6QAASfi1B/zFGALNCc0J/MUAALUHtQf8xRgCMfbNCfzFGALNCc0J/7+yQc0JMfb/vxgCzQkx9v+/skHNCc0J/78AALUHSfhU1QAAAAAAAFTVAAC1B7UHVNUAAP//AABU1QAAAAD//1TVAABJ+LUHVNUAAEn4SfhU1QAA/////1TVGALNCTH2//+yQTH2Mfb//xgCMfYx9v//skHNCTH2//8YAjH2Mfb/P7JBMfbNCf8/GAIx9s0J/7+yQTH2Mfb/PxgCMfbNCf5/skHNCc0J/n8YAs0JzQn+f7JBMfbNCf5//7//v/+//7//v/+//7//v6oqqiqqKqoqqiqqKqoqqir/////////////////////AAD/fwAA/38AAP9/AAD/f/9//7//f/+//3//v/9//7//4v25/+L9uf/i/bn/4v25+sr6yvrK+sr6yvrK+sr6yvrKCer6ygnq+soJ6vrKCer/4v/i/+L/4v/i/+L/4v/i////f////3////9/////f1TVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTV////f////3////9/////fwAA/38AAP9/AAD/fwAA/3//f////3////9/////f///")
+}, {
+"aabb": AABB(-0.486745, -0.923416, -0.923416, 1e-05, 1.84683, 1.84683),
+"attribute_data": PackedByteArray("cmKL/YydcsKMnYv9cmJywg=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_bsmt8"),
+"name": "papan tulis",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNVU1VTVVNVU1VTVVNVU1VTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_0oecf")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o6u16"]
+data = PackedVector3Array(-1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, -0.939786, -0.939786, -0.98363, -0.923416, 0.923416, -1, -0.939786, 0.939786, -1, -0.939786, -0.939786, -0.98363, -0.923416, -0.923416, -0.98363, -0.923416, 0.923416, -1, -0.939786, 0.939786, -0.98363, 0.923416, 0.923416, -1, 0.939786, 0.939786, -1, -0.939786, 0.939786, -0.98363, -0.923416, 0.923416, -0.98363, 0.923416, 0.923416, -1, 0.939786, 0.939786, -0.98363, 0.923416, -0.923416, -1, 0.939786, -0.939786, -1, 0.939786, 0.939786, -0.98363, 0.923416, 0.923416, -0.98363, 0.923416, -0.923416, -1, 0.939786, -0.939786, -0.98363, -0.923416, -0.923416, -1, -0.939786, -0.939786, -1, 0.939786, -0.939786, -0.98363, 0.923416, -0.923416, -0.98363, -0.923416, -0.923416, -0.98363, -0.923416, -0.923416, -0.486745, -0.923416, 0.923416, -0.98363, -0.923416, 0.923416, -0.98363, -0.923416, -0.923416, -0.486745, -0.923416, -0.923416, -0.486745, -0.923416, 0.923416, -1, -0.939786, 0.939786, -1, -1, -1, -1, -0.939786, -0.939786, -1, -0.939786, 0.939786, -1, -1, 1, -1, -1, -1, -0.98363, -0.923416, 0.923416, -0.486745, 0.923416, 0.923416, -0.98363, 0.923416, 0.923416, -0.98363, -0.923416, 0.923416, -0.486745, -0.923416, 0.923416, -0.486745, 0.923416, 0.923416, -1, 0.939786, 0.939786, -1, -1, 1, -1, -0.939786, 0.939786, -1, 0.939786, 0.939786, -1, 1, 1, -1, -1, 1, -0.98363, 0.923416, 0.923416, -0.486745, 0.923416, -0.923416, -0.98363, 0.923416, -0.923416, -0.98363, 0.923416, 0.923416, -0.486745, 0.923416, 0.923416, -0.486745, 0.923416, -0.923416, -1, 0.939786, -0.939786, -1, 1, 1, -1, 0.939786, 0.939786, -1, 0.939786, -0.939786, -1, 1, -1, -1, 1, 1, -1, -0.939786, -0.939786, -1, 1, -1, -1, 0.939786, -0.939786, -1, -0.939786, -0.939786, -1, -1, -1, -1, 1, -1, -0.98363, 0.923416, -0.923416, -0.486745, -0.923416, -0.923416, -0.98363, -0.923416, -0.923416, -0.98363, 0.923416, -0.923416, -0.486745, 0.923416, -0.923416, -0.486745, -0.923416, -0.923416, -0.486745, -0.923416, 0.923416, -0.486745, 0.923416, -0.923416, -0.486745, 0.923416, 0.923416, -0.486745, -0.923416, 0.923416, -0.486745, -0.923416, -0.923416, -0.486745, 0.923416, -0.923416)
+
+[node name="papanTulis" type="MeshInstance3D"]
+transform = Transform3D(0.025, 0, 0, 0, 0.6, 0, 0, 0, 1.2, 0, 0, 0)
+mesh = SubResource("ArrayMesh_3nf62")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_o6u16")

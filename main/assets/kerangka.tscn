@@ -1,0 +1,162 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdme2ikwhy5bl"]
+
+[ext_resource type="PackedScene" uid="uid://cfsh4ymnlsmuy" path="res://assets/kerangka.glb" id="1_tgeo1"]
+[ext_resource type="Texture2D" uid="uid://g3fhi56dn0k6" path="res://assets/wire mesh.jpg" id="2_j4aik"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xa1j"]
+albedo_texture = ExtResource("2_j4aik")
+
+[node name="kerangka" instance=ExtResource("1_tgeo1")]
+
+[node name="Meja_kelas" parent="." index="0"]
+visible = false
+
+[node name="meja_mm" parent="." index="1"]
+visible = false
+
+[node name="meja_resepsionis" parent="." index="2"]
+visible = false
+
+[node name="kursi_bangku" parent="." index="3"]
+visible = false
+
+[node name="kursi_kelas" parent="." index="4"]
+visible = false
+
+[node name="kursi_kuliah" parent="." index="5"]
+visible = false
+
+[node name="kursi_kantor" parent="." index="6"]
+visible = false
+
+[node name="Lemari" parent="." index="7"]
+visible = false
+
+[node name="tongSampah_tinggi" parent="." index="8"]
+visible = false
+
+[node name="tongSampah_pendek" parent="." index="9"]
+visible = false
+
+[node name="vas_tinggi" parent="." index="10"]
+visible = false
+
+[node name="lantai" parent="." index="11"]
+visible = false
+
+[node name="dinding" parent="." index="12"]
+visible = false
+
+[node name="StaticBody3D" parent="dinding" index="0"]
+visible = false
+
+[node name="kusen_pintu" parent="." index="13"]
+visible = false
+
+[node name="dinding_pintu" parent="." index="14"]
+visible = false
+
+[node name="pintu" parent="." index="15"]
+visible = false
+
+[node name="dinding_jendela" parent="." index="16"]
+visible = false
+
+[node name="CollisionShape3D" parent="dinding_jendela/StaticBody3D" index="0"]
+visible = false
+
+[node name="vas_panjang" parent="." index="17"]
+visible = false
+
+[node name="CollisionShape3D" parent="vas_panjang/StaticBody3D" index="0"]
+visible = false
+
+[node name="cermin" parent="." index="18"]
+visible = false
+
+[node name="pilar" parent="." index="19"]
+visible = false
+
+[node name="proyektor" parent="." index="20"]
+visible = false
+
+[node name="kipas_atap" parent="." index="21"]
+visible = false
+
+[node name="papan" parent="." index="22"]
+visible = false
+
+[node name="papanTulis" parent="." index="23"]
+visible = false
+
+[node name="StaticBody3D" parent="papanTulis" index="0"]
+visible = false
+
+[node name="penHolder" parent="." index="24"]
+visible = false
+
+[node name="spidol" parent="penHolder" index="0"]
+visible = false
+
+[node name="StaticBody3D" parent="penHolder" index="1"]
+visible = false
+
+[node name="Kipas_angin" parent="." index="25"]
+visible = false
+
+[node name="bendera" parent="." index="26"]
+visible = false
+
+[node name="locker" parent="." index="27"]
+visible = false
+
+[node name="rolling" parent="." index="28"]
+visible = false
+
+[node name="Bookshelf" parent="." index="29"]
+visible = false
+
+[node name="bunga" parent="." index="30"]
+visible = false
+
+[node name="cpu" parent="." index="31"]
+visible = false
+
+[node name="panggung" parent="." index="32"]
+visible = false
+
+[node name="StaticBody3D" parent="panggung" index="0"]
+visible = false
+
+[node name="gawang" parent="." index="33"]
+visible = false
+
+[node name="StaticBody3D" parent="gawang" index="0"]
+visible = false
+
+[node name="CollisionShape3D" parent="gawang/StaticBody3D" index="0"]
+visible = false
+
+[node name="lantaiLapangan" parent="." index="34"]
+visible = false
+
+[node name="StaticBody3D" parent="lantaiLapangan" index="0"]
+visible = false
+
+[node name="CollisionShape3D" parent="lantaiLapangan/StaticBody3D" index="0"]
+visible = false
+
+[node name="lantaiAspal" parent="." index="35"]
+visible = false
+
+[node name="StaticBody3D" parent="lantaiAspal" index="0"]
+visible = false
+
+[node name="pager" parent="." index="36"]
+visible = false
+
+[node name="pager_001" parent="." index="37"]
+surface_material_override/1 = SubResource("StandardMaterial3D_2xa1j")
+
+[node name="tangga" parent="." index="38"]
+visible = false

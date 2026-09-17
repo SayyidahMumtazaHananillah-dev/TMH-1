@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://clxx2lfyvxabw"]
+
+[ext_resource type="PackedScene" uid="uid://cl74gg5j21g44" path="res://assets/dinding_pintu.glb" id="1_h18t2"]
+[ext_resource type="Texture2D" uid="uid://b6uo5o8emjqfb" path="res://assets/dindingOren_white_stucco_diff_4k.jpg" id="2_v2yom"]
+[ext_resource type="Texture2D" uid="uid://c77d20yxfeura" path="res://assets/dindingHijau_white_stucco_diff_4k.jpg" id="3_fc1e5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2vh4"]
+albedo_texture = ExtResource("2_v2yom")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tsb2"]
+albedo_texture = ExtResource("3_fc1e5")
+
+[node name="dinding_pintu" instance=ExtResource("1_h18t2")]
+
+[node name="dinding_pintu" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_t2vh4")
+surface_material_override/1 = SubResource("StandardMaterial3D_8tsb2")

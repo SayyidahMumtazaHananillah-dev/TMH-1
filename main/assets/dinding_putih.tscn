@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://qvcefldpci5j"]
+
+[ext_resource type="PackedScene" uid="uid://ce4ed4hebqbyi" path="res://assets/dindingPutih.glb" id="1_4xmmb"]
+[ext_resource type="Texture2D" uid="uid://b6uo5o8emjqfb" path="res://assets/dindingOren_white_stucco_diff_4k.jpg" id="2_y7e54"]
+[ext_resource type="Texture2D" uid="uid://bbv44r50bjmmm" path="res://assets/dindingPutih_white_stucco_diff_4k.jpg" id="3_3thut"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ympgd"]
+albedo_texture = ExtResource("2_y7e54")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gamkl"]
+albedo_texture = ExtResource("3_3thut")
+
+[node name="dindingPutih" instance=ExtResource("1_4xmmb")]
+
+[node name="dinding" parent="." index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_ympgd")
+surface_material_override/2 = SubResource("StandardMaterial3D_gamkl")

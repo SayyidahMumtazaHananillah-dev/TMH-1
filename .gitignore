@@ -1,0 +1,28 @@
+# Cache & Import Godot 4
+.godot/
+
+# Exported builds (folder kalau kamu export game)
+*.apk
+*.exe
+*.zip
+build/
+
+# System / OS files
+.DS_Store
+Thumbs.db
+
+*.glb
+*.gltf
+
+# Godot cache
+.godot/
+
+# File 3D mentah & hasil render berat
+*.glb
+*.gltf
+*.blend
+*.fbx
+*.obj
+
+# Asset & Textures berukuran besar (Opsional: sesuaikan jika folder teksturmu raksasa)
+*.tres

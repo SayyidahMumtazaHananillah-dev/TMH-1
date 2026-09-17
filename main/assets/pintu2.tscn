@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://gixwu375p27w"]
+
+[ext_resource type="PackedScene" uid="uid://bteqemmp1b4wh" path="res://assets/pintu.tscn" id="1_qklbg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsqys"]
+albedo_color = Color(0.720467, 0.720468, 0.720467, 1)
+
+[node name="pintu" instance=ExtResource("1_qklbg")]
+surface_material_override/0 = SubResource("StandardMaterial3D_jsqys")

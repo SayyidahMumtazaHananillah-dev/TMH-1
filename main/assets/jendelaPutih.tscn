@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvyeom8ve4gv5"]
+
+[ext_resource type="PackedScene" uid="uid://c4dp4jctw4fhy" path="res://assets/jendela.glb" id="1_qnj71"]
+[ext_resource type="Texture2D" uid="uid://b6uo5o8emjqfb" path="res://assets/dindingOren_white_stucco_diff_4k.jpg" id="2_ga3pj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pf3es"]
+albedo_texture = ExtResource("2_ga3pj")
+
+[node name="jendela" instance=ExtResource("1_qnj71")]
+
+[node name="dinding_jendela" parent="." index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_pf3es")

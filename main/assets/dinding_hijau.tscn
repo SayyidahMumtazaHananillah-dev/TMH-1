@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=4 uid="uid://cpwdfps6b8je3"]
+
+[ext_resource type="PackedScene" uid="uid://caupovq3u4tca" path="res://assets/dindingHijau.glb" id="1_s67uy"]
+[ext_resource type="Texture2D" uid="uid://c77d20yxfeura" path="res://assets/dindingHijau_white_stucco_diff_4k.jpg" id="2_nqk6j"]
+[ext_resource type="Texture2D" uid="uid://b6uo5o8emjqfb" path="res://assets/dindingOren_white_stucco_diff_4k.jpg" id="3_2ikq7"]
+[ext_resource type="Texture2D" uid="uid://da1ol0rqriena" path="res://assets/dindingHijau_white_stucco_rough_4k.jpg" id="4_i3dao"]
+[ext_resource type="Texture2D" uid="uid://by8wtjb34tlpa" path="res://assets/dindingHijau_white_stucco_nor_gl_4k.jpg" id="5_7qygl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8dax"]
+albedo_texture = ExtResource("2_nqk6j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6rcj"]
+albedo_texture = ExtResource("3_2ikq7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3j0d"]
+resource_name = "dinding hijau"
+cull_mode = 2
+albedo_texture = ExtResource("2_nqk6j")
+metallic_texture = ExtResource("4_i3dao")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("4_i3dao")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("5_7qygl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oah7p"]
+resource_name = "dinding oren"
+cull_mode = 2
+albedo_texture = ExtResource("2_nqk6j")
+metallic_texture = ExtResource("4_i3dao")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("4_i3dao")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("5_7qygl")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0cqn0"]
+_surfaces = [{
+"aabb": AABB(-1, -0.164264, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAAEAAMAAAAFAAQA"),
+"name": "dinding hijau",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAAAAAAD/////AAAAAAAA//8AAAAA//8AAAAAAAD//wAA//8AAAAAAAD//wAA")
+}, {
+"aabb": AABB(-1, -0.164264, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEABQAAAAIABAAGAAIABQACAAYABwAGAAQABwAFAAYA"),
+"name": "dinding oren",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vej6u"]
+resource_name = "dindingHijau_Cube_010"
+_surfaces = [{
+"aabb": AABB(-1, -0.164264, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/1//v/+f/3//n/+//1//f/8f/3//X/8//1//f/8f/z8="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_f3j0d"),
+"name": "dinding hijau",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAA////////AAD//wAA//8AAP////8AAAAA//8AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/+//7//v/+//7//v/+//78AAP9/AAD/fwAA/38AAP9/")
+}, {
+"aabb": AABB(-1, -0.164264, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/3//n/8//5//f/9f/z//X/8//58AAP+f/z//XwAA/5//f//f/z//3/9//5//Pw=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0A"),
+"material": SubResource("StandardMaterial3D_oah7p"),
+"name": "dinding oren",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNX//wAAAABU1f///////1TV/////wAAVNX//wAA//9U1f//AAD///+/AAD//////7//////////vwAAAAD///+//////wAA//8AAP///////wAA//8AAP////////////9U1VTVVNVU1VTVVNVU1VTVqiqqKqoqqiqqKqoqqiqqKv//////////////////////f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_0cqn0")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lrkg3"]
+data = PackedVector3Array(-1, -0.164264, -1, 1, 1.83574, -1, -1, 1.83574, -1, -1, -0.164264, -1, 1, -0.164264, -1, 1, 1.83574, -1, -1, -0.164264, -1, 1, -0.164264, 1, 1, -0.164264, -1, -1, -0.164264, -1, -1, -0.164264, 1, 1, -0.164264, 1, -1, -0.164264, 1, -1, 1.83574, -1, -1, 1.83574, 1, -1, -0.164264, 1, -1, -0.164264, -1, -1, 1.83574, -1, 1, -0.164264, -1, 1, 1.83574, 1, 1, 1.83574, -1, 1, -0.164264, -1, 1, -0.164264, 1, 1, 1.83574, 1, 1, -0.164264, 1, -1, 1.83574, 1, 1, 1.83574, 1, 1, -0.164264, 1, -1, -0.164264, 1, -1, 1.83574, 1, 1, 1.83574, -1, -1, 1.83574, 1, -1, 1.83574, -1, 1, 1.83574, -1, 1, 1.83574, 1, -1, 1.83574, 1)
+
+[node name="dindingHijau" instance=ExtResource("1_s67uy")]
+
+[node name="dinding" parent="." index="0"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_j8dax")
+surface_material_override/1 = SubResource("StandardMaterial3D_p6rcj")
+
+[node name="StaticBody3D" parent="dinding" index="0"]
+visible = false
+
+[node name="CollisionShape3D" parent="dinding/StaticBody3D" index="0"]
+visible = false
+
+[node name="dinding2" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(2, 0, 0, 0, 1.75, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_vej6u")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_j8dax")
+surface_material_override/1 = SubResource("StandardMaterial3D_p6rcj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="dinding2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dinding2/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_lrkg3")
