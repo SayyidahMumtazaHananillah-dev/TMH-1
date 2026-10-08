@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp44aqcamux4n"]
+
+[ext_resource type="PackedScene" uid="uid://br653o3j12nno" path="res://gerbang1.glb" id="1_uwv75"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwv75"]
+albedo_color = Color(0.357949, 0.29826, 0.247242, 1)
+metallic = 0.7
+
+[node name="gerbang1" instance=ExtResource("1_uwv75")]
+
+[node name="polySurface103_standardSurface1_0" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uwv75")
+
+[node name="polySurface170_standardSurface1_0" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uwv75")
+
+[node name="polySurface175_standardSurface1_0" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uwv75")

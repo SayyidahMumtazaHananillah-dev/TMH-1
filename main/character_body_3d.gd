@@ -3,6 +3,9 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+# Kekuatan dorongan ke benda RigidBody
+@export var PUSH_FORCE: float = 8.0
+
 # Sensitivitas rotasi mouse
 @export var MOUSE_SENSITIVITY: float = 0.003
 
@@ -61,3 +64,17 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+	# --- Bagian Pendorong Objek Fisika (RigidBody3D) ---
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider is RigidBody3D:
+			# Arah dorong menjauhi player secara horizontal (sumbu Y dinolkan)
+			var push_dir = -collision.get_normal()
+			push_dir.y = 0.0
+			push_dir = push_dir.normalized()
+			
+			# Dorong kursinya
+			collider.apply_central_impulse(push_dir * PUSH_FORCE)
