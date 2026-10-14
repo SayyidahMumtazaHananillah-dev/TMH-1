@@ -1,28 +1,42 @@
-# Cache & Import Godot 4
+# Godot 4 - Cache & Generated files
 .godot/
 
-# Exported builds (folder kalau kamu export game)
+# Exported builds
 *.apk
 *.exe
-*.zip
 build/
 
 # System / OS files
 .DS_Store
 Thumbs.db
 
-*.glb
-*.gltf
+# ============================================
+# File SUMBER MENTAH yang TIDAK perlu di-push
+# (simpan di lokal saja, bukan bagian dari game)
+# ============================================
 
-# Godot cache
-.godot/
-
-# File 3D mentah & hasil render berat
-*.glb
-*.gltf
+# Blender source files & backups
 *.blend
-*.fbx
-*.obj
+*.blend1
 
-# Asset & Textures berukuran besar (Opsional: sesuaikan jika folder teksturmu raksasa)
-*.tres
+# Archive files (ZIP, RAR sudah diekstrak)
+*.zip
+*.rar
+
+# Format 3D mentah yang BUKAN Godot
+*.fbx
+
+# File format non-Godot (Blender material/USD)
+*.mtlx
+*.usdc
+
+# ============================================
+# FOLDER di luar project Godot (source assets)
+# ============================================
+/Assets library/
+/TEXTURE/
+/TEXTURE 2/
+
+# Root-level GLB duplikat (bukan bagian project)
+/dindingHijau.glb
+/dindingPutih.glb
