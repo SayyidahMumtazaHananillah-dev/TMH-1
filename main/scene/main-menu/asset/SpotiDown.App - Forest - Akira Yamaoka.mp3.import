@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwlk52wvv3m0p"
+path="res://.godot/imported/SpotiDown.App - Forest - Akira Yamaoka.mp3-0234a226b24763f219ba25e2b5e83c80.mp3str"
+
+[deps]
+
+source_file="res://asset/SpotiDown.App - Forest - Akira Yamaoka.mp3"
+dest_files=["res://.godot/imported/SpotiDown.App - Forest - Akira Yamaoka.mp3-0234a226b24763f219ba25e2b5e83c80.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

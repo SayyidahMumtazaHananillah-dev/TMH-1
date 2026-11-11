@@ -9,7 +9,7 @@ metadata={
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e940e5b54f5f5b42d0a9fca35bae9896"
+"md5": "40bc499f7b57cf1ab104b8f115e6c439"
 }
 
 [deps]
@@ -22,6 +22,8 @@ dest_files=["res://.godot/imported/kerangka_flower_scattered_asphalt_nor_gl_4k.j
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=1
 compress/channel_pack=0
@@ -29,6 +31,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
 roughness/src_normal="res://assets/kerangka_flower_scattered_asphalt_nor_gl_4k.jpg"
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

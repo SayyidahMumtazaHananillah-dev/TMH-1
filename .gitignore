@@ -39,4 +39,4 @@ Thumbs.db
 
 # Root-level GLB duplikat (bukan bagian project)
 /dindingHijau.glb
-/dindingPutih.glb
+/dindingPutih.glb*.tmp
