@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsfiywwdmfu0i"]
+
+[ext_resource type="Script" uid="uid://v1eu6w7fu4kb" path="res://scripts/character_body_3d.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://cdpww1i2vlw73" path="res://assets/models/anak_sma_cewe.glb" id="2_g2els"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wnkbs"]
+radius = 0.2
+height = 1.7
+
+[sub_resource type="Gradient" id="Gradient_3vyb7"]
+offsets = PackedFloat32Array(0, 0.28169, 0.640845, 0.774648, 1)
+colors = PackedColorArray(0.721569, 0.721569, 0.721569, 1, 1, 1, 1, 1, 0.591549, 0.591549, 0.591549, 1, 0.180005, 0.180005, 0.180005, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g2els"]
+gradient = SubResource("Gradient_3vyb7")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.563107, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4flbx"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_wnkbs")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999998, 0.00066027, 0.00168713, -0.000675545, 0.999959, 0.00906971, -0.00168107, -0.00907084, 0.999957, 0, 0.788148, -0.138008)
+fov = 30.173
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(0.999998, 0.00174533, 0, -0.00174506, 0.999847, 0.0174524, 3.04602e-05, -0.0174524, 0.999848, 0, 0, 0)
+target_position = Vector3(0, 0, -1.5)
+
+[node name="senterHp" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(1, -9.09495e-13, -4.65661e-10, -4.54747e-12, 1, 9.31323e-10, 4.65661e-10, 0, 1, 0.00237598, -0.137179, -1.21331)
+light_color = Color(0.667076, 0.721913, 0.621661, 1)
+light_energy = 3.0
+light_projector = SubResource("GradientTexture2D_g2els")
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 15.0
+spot_attenuation = 1.2
+spot_angle = 42.0
+spot_angle_attenuation = 2.2
+
+[node name="senterTengah" type="SpotLight3D" parent="Camera3D"]
+transform = Transform3D(1, -9.09495e-13, -4.65661e-10, -4.54747e-12, 1, 9.31323e-10, 4.65661e-10, 0, 1, 0.00237598, -0.137179, -1.21331)
+light_color = Color(0.667076, 0.721913, 0.621661, 1)
+light_energy = 1.2
+light_projector = SubResource("GradientTexture2D_g2els")
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 15.0
+spot_attenuation = 1.2
+spot_angle = 18.0
+spot_angle_attenuation = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_4flbx")
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -581.0
+offset_top = -329.0
+offset_right = -571.0
+offset_bottom = -319.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_g2els")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

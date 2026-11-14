@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c6cbykpalrfe5"
+path.s3tc="res://.godot/imported/Rock061_2K-JPG_AmbientOcclusion.jpg-2c74e95d7250b3c65f1cc2a50c58fea5.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://assets/textures/TEXTURE 2/textures/Rock061_2K-JPG_AmbientOcclusion.jpg"
+dest_files=["res://.godot/imported/Rock061_2K-JPG_AmbientOcclusion.jpg-2c74e95d7250b3c65f1cc2a50c58fea5.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://assets/textures/TEXTURE 2/textures/Rock061_2K-JPG_NormalGL.jpg"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

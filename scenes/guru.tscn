@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c34tv3iiwvawx"]
+
+[ext_resource type="Script" uid="uid://7gu6f2s07ws" path="res://scripts/guru.gd" id="1_yyy7i"]
+[ext_resource type="PackedScene" uid="uid://datgf0rpupj57" path="res://assets/models/pak_guru.glb" id="2_vp7nd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_djfwl"]
+size = Vector3(0.55249, 1.83752, 0.494385)
+
+[node name="Guru" type="CharacterBody3D"]
+script = ExtResource("1_yyy7i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.901186, 0.022428)
+shape = SubResource("BoxShape3D_djfwl")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_vp7nd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
