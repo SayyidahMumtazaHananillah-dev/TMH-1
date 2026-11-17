@@ -2,26 +2,28 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3fouoqb6x33g"
-path.s3tc="res://.godot/imported/anak_sma_cewe_0.jpg-e03fd7d44311cb26f063b9d310411b05.s3tc.ctex"
+uid="uid://d0lk81aon0wcw"
+path.s3tc="res://.godot/imported/model_Image_0.jpg-8025a7d6a720f012f9ba4ba26cdb5256.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "7b3c334620eacc0d832984d3ff6ca68a"
+"md5": "137f219a7bad8910ef1e5c19db61a6d8"
 }
 
 [deps]
 
-source_file="res://assets/models/anak_sma_cewe_0.jpg"
-dest_files=["res://.godot/imported/anak_sma_cewe_0.jpg-e03fd7d44311cb26f063b9d310411b05.s3tc.ctex"]
+source_file="res://assets/models/model_Image_0.jpg"
+dest_files=["res://.godot/imported/model_Image_0.jpg-8025a7d6a720f012f9ba4ba26cdb5256.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -29,6 +31,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

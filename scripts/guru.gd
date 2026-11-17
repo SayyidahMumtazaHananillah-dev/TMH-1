@@ -141,6 +141,10 @@ func attack() -> void:
 	if target and target.has_method("take_damage"):
 		target.take_damage(attack_damage)
 	
+	# Player ketangkap: dikunci & dipaksa menghadap guru
+	if target and target.has_method("tertangkap"):
+		target.tertangkap(self)
+	
 	await get_tree().create_timer(attack_cooldown).timeout
 	is_attacking = false
 
@@ -175,3 +179,76 @@ func _set_new_wander_target() -> void:
 	wander_target = new_target
 	is_wandering = true
 	wander_timer = 0.0
+
+
+
+# =====================================================================
+# ANIMASI JALAN / LARI (TAMBAHAN - kode di atas tidak diubah)
+# Butuh node AnimationPlayer di dalam model (dari pak_guru_anim.glb).
+# =====================================================================
+const ANIM_WALK_BASE_SPEED := 1.5  # kecepatan asli animasi jalan
+const ANIM_RUN_BASE_SPEED := 4.0   # kecepatan asli animasi lari
+
+var _anim_player: AnimationPlayer = null
+var _anim_idle: StringName = &""
+var _anim_walk: StringName = &""
+var _anim_run: StringName = &""
+var _anim_catch: StringName = &""
+var _anim_current: StringName = &""
+var _anim_ready := false
+
+
+func _process(_delta: float) -> void:
+	if not _anim_ready:
+		_setup_animation()
+		return
+
+	# ANIMASI NANGKEP PEMAIN (main sekali selama is_attacking, lalu balik normal)
+	if is_attacking and _anim_catch != &"":
+		if _anim_current != _anim_catch:
+			_anim_current = _anim_catch
+			_anim_player.speed_scale = 1.0
+			_anim_player.play(_anim_catch, 0.1)
+		return
+
+	var speed := Vector2(velocity.x, velocity.z).length()
+
+	if is_stunned or speed < 0.1:
+		_play_anim(_anim_idle, 1.0)
+	elif is_wandering or speed <= walk_speed + 0.2:
+		_play_anim(_anim_walk, speed / ANIM_WALK_BASE_SPEED)
+	else:
+		_play_anim(_anim_run, speed / ANIM_RUN_BASE_SPEED)
+
+
+func _setup_animation() -> void:
+	_anim_player = find_child("AnimationPlayer", true, false) as AnimationPlayer
+	if _anim_player == null:
+		return
+	_anim_idle = _find_anim("idle")
+	_anim_walk = _find_anim("walk")
+	_anim_run = _find_anim("run")
+	_anim_catch = _find_anim("catch")
+	if _anim_catch != &"":
+		_anim_player.get_animation(_anim_catch).loop_mode = Animation.LOOP_NONE
+	for a in [_anim_idle, _anim_walk, _anim_run]:
+		if a != &"":
+			_anim_player.get_animation(a).loop_mode = Animation.LOOP_LINEAR
+	_anim_ready = true
+
+
+func _find_anim(keyword: String) -> StringName:
+	for a in _anim_player.get_animation_list():
+		if String(a).contains(keyword):
+			return a
+	push_warning("Animasi '%s' tidak ditemukan di AnimationPlayer" % keyword)
+	return &""
+
+
+func _play_anim(anim_name: StringName, speed_scale: float) -> void:
+	if anim_name == &"":
+		return
+	if _anim_current != anim_name:
+		_anim_current = anim_name
+		_anim_player.play(anim_name, 0.2) # blend 0.2 detik
+	_anim_player.speed_scale = speed_scale

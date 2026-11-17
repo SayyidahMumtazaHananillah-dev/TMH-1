@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dng0akm1glth2"]
+
+[ext_resource type="Script" uid="uid://kvxut8rb11bx" path="res://scripts/layar_tangkap.gd" id="1_4po3x"]
+
+[node name="LayarTangkap" type="Control" unique_id=1452226817]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4po3x")

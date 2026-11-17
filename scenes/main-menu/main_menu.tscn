@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b7rt4mwk31wbn"]
+[gd_scene format=4 uid="uid://b7rt4mwk31wbn"]
 
 [ext_resource type="Script" uid="uid://dhkvghc1dryk2" path="res://scenes/main-menu/main_menu.gd" id="1_jix8l"]
 [ext_resource type="Shader" uid="uid://csp1550u1k6nr" path="res://scenes/main-menu/main_menu.gdshader" id="2_8qtwp"]
@@ -38,7 +38,7 @@ format = 3
 loop_begin = 1
 stereo = true
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1339853637]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,7 +48,7 @@ grow_vertical = 2
 script = ExtResource("1_jix8l")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=660121668]
 material = SubResource("ShaderMaterial_iqfw8")
 custom_minimum_size = Vector2(360, 138)
 layout_mode = 0
@@ -59,7 +59,7 @@ texture = ExtResource("3_j5v2v")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="judul 3" type="Label" parent="."]
+[node name="judul 3" type="Label" parent="." unique_id=1637551698]
 visible = false
 layout_mode = 0
 offset_left = 96.0
@@ -71,7 +71,7 @@ theme_override_fonts/font = ExtResource("8_0o4t1")
 theme_override_font_sizes/font_size = 80
 text = "HOMEWORK"
 
-[node name="judul" type="Label" parent="."]
+[node name="judul" type="Label" parent="." unique_id=924007971]
 visible = false
 layout_mode = 0
 offset_left = 42.0
@@ -82,23 +82,23 @@ theme_override_fonts/font = ExtResource("8_0o4t1")
 theme_override_font_sizes/font_size = 80
 text = "TOO MUCH"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=255829252]
 stream = SubResource("AudioStreamWAV_0k4wn")
 volume_db = -2.632
 autoplay = true
 script = ExtResource("5_0o4t1")
 
-[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=1434761283]
 stream = ExtResource("6_0k4wn")
 volume_db = -6.985
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=1977452317]
 stream = ExtResource("7_j5v2v")
 
-[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+[node name="OpenSound" type="AudioStreamPlayer" parent="." unique_id=997101118]
 stream = ExtResource("8_j5v2v")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1473945410]
 visible = false
 layout_mode = 0
 offset_left = 42.0
@@ -108,32 +108,32 @@ offset_bottom = 552.0
 theme_override_constants/separation = 20
 script = ExtResource("6_0o4t1")
 
-[node name="play" type="Button" parent="VBoxContainer"]
+[node name="play" type="Button" parent="VBoxContainer" unique_id=1738983809]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_0o4t1")
 theme_override_font_sizes/font_size = 30
 text = "PLAY"
 
-[node name="settings" type="Button" parent="VBoxContainer"]
+[node name="settings" type="Button" parent="VBoxContainer" unique_id=1253107205]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_0o4t1")
 theme_override_font_sizes/font_size = 30
 text = "SETTING"
 
-[node name="credit" type="Button" parent="VBoxContainer"]
+[node name="credit" type="Button" parent="VBoxContainer" unique_id=793197807]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_0o4t1")
 theme_override_font_sizes/font_size = 30
 text = "CREDIT"
 
-[node name="exit" type="Button" parent="VBoxContainer"]
+[node name="exit" type="Button" parent="VBoxContainer" unique_id=1409232734]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.77798, 0, 0.008788, 1)
 theme_override_fonts/font = ExtResource("8_0o4t1")
 theme_override_font_sizes/font_size = 30
 text = "EXIT"
 
-[node name="SettingsPanel" type="Panel" parent="."]
+[node name="SettingsPanel" type="Panel" parent="." unique_id=327421503]
 visible = false
 layout_mode = 0
 offset_left = 1150.0
@@ -142,7 +142,7 @@ offset_right = 1550.0
 offset_bottom = 653.0
 script = ExtResource("5_nlkkf")
 
-[node name="MusicSlider" type="HSlider" parent="SettingsPanel"]
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel" unique_id=338535285]
 layout_mode = 0
 offset_left = 215.0
 offset_top = 172.0
@@ -150,28 +150,28 @@ offset_right = 360.0
 offset_bottom = 262.0
 value = 100.0
 
-[node name="sfxslider" type="HSlider" parent="SettingsPanel"]
+[node name="sfxslider" type="HSlider" parent="SettingsPanel" unique_id=1115364450]
 layout_mode = 0
 offset_left = 215.0
 offset_top = 219.0
 offset_right = 360.0
 offset_bottom = 309.0
 
-[node name="brightnessslider" type="HSlider" parent="SettingsPanel"]
+[node name="brightnessslider" type="HSlider" parent="SettingsPanel" unique_id=1786684529]
 layout_mode = 0
 offset_left = 215.0
 offset_top = 406.0
 offset_right = 360.0
 offset_bottom = 496.0
 
-[node name="masterslider" type="HSlider" parent="SettingsPanel"]
+[node name="masterslider" type="HSlider" parent="SettingsPanel" unique_id=1386906952]
 layout_mode = 0
 offset_left = 215.0
 offset_top = 125.0
 offset_right = 360.0
 offset_bottom = 215.0
 
-[node name="setting" type="Label" parent="SettingsPanel"]
+[node name="setting" type="Label" parent="SettingsPanel" unique_id=836379]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.1
@@ -184,7 +184,7 @@ theme_override_font_sizes/font_size = 60
 text = "SETTINGS
 "
 
-[node name="audio" type="Label" parent="SettingsPanel"]
+[node name="audio" type="Label" parent="SettingsPanel" unique_id=550259260]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.1
@@ -198,7 +198,7 @@ theme_override_font_sizes/font_size = 40
 text = "AUDIO
 "
 
-[node name="graphics" type="Label" parent="SettingsPanel"]
+[node name="graphics" type="Label" parent="SettingsPanel" unique_id=1964105937]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.1
@@ -212,7 +212,7 @@ theme_override_font_sizes/font_size = 40
 text = "GRAPHICS
 "
 
-[node name="volume" type="Label" parent="SettingsPanel"]
+[node name="volume" type="Label" parent="SettingsPanel" unique_id=1557629869]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.1
@@ -225,7 +225,7 @@ theme_override_font_sizes/font_size = 37
 text = "Music Volume
 "
 
-[node name="mastervolume" type="Label" parent="SettingsPanel"]
+[node name="mastervolume" type="Label" parent="SettingsPanel" unique_id=413639377]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.1
@@ -238,7 +238,7 @@ theme_override_font_sizes/font_size = 37
 text = "Master Volume
 "
 
-[node name="sfx" type="Label" parent="SettingsPanel"]
+[node name="sfx" type="Label" parent="SettingsPanel" unique_id=1910331955]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.1
@@ -250,7 +250,7 @@ offset_bottom = 260.04
 theme_override_font_sizes/font_size = 37
 text = "SFX Volume"
 
-[node name="fullscreen" type="Label" parent="SettingsPanel"]
+[node name="fullscreen" type="Label" parent="SettingsPanel" unique_id=75169586]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.1
@@ -262,7 +262,7 @@ offset_bottom = 403.04
 theme_override_font_sizes/font_size = 37
 text = "Fullscreen"
 
-[node name="brightness" type="Label" parent="SettingsPanel"]
+[node name="brightness" type="Label" parent="SettingsPanel" unique_id=450879422]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.1
@@ -274,7 +274,7 @@ offset_bottom = 449.04
 theme_override_font_sizes/font_size = 37
 text = "Brightness"
 
-[node name="closebutton" type="Button" parent="SettingsPanel"]
+[node name="closebutton" type="Button" parent="SettingsPanel" unique_id=2092214122]
 layout_mode = 0
 offset_left = 143.0
 offset_top = 562.0
@@ -283,7 +283,7 @@ offset_bottom = 630.0
 theme_override_font_sizes/font_size = 60
 text = "Close"
 
-[node name="fullscreenbutton" type="CheckBox" parent="SettingsPanel"]
+[node name="fullscreenbutton" type="CheckBox" parent="SettingsPanel" unique_id=1260916414]
 layout_mode = 0
 offset_left = 204.0
 offset_top = 383.0
@@ -292,7 +292,7 @@ offset_bottom = 407.0
 scale = Vector2(2, 2)
 button_pressed = true
 
-[node name="CreditPanel" type="Panel" parent="."]
+[node name="CreditPanel" type="Panel" parent="." unique_id=1256141133]
 visible = false
 layout_mode = 0
 offset_left = 1156.0
@@ -300,7 +300,7 @@ offset_top = -2.0
 offset_right = 1550.0
 offset_bottom = 653.0
 
-[node name="credits" type="Label" parent="CreditPanel"]
+[node name="credits" type="Label" parent="CreditPanel" unique_id=985990421]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.1
@@ -312,7 +312,7 @@ offset_bottom = 132.96
 theme_override_font_sizes/font_size = 60
 text = "CREDITS"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CreditPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditPanel" unique_id=1327215632]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -326,7 +326,7 @@ offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="CreditPanel/ScrollContainer"]
+[node name="Label" type="Label" parent="CreditPanel/ScrollContainer" unique_id=1812430863]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -364,7 +364,7 @@ Komunitas Godot Engine Indonesia"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="closebuttoncredit" type="Button" parent="CreditPanel"]
+[node name="closebuttoncredit" type="Button" parent="CreditPanel" unique_id=304379513]
 layout_mode = 0
 offset_left = 117.0
 offset_top = 562.0
@@ -374,7 +374,7 @@ scale = Vector2(1.52928, 1.43433)
 theme_override_font_sizes/font_size = 40
 text = "Close"
 
-[node name="ExitPopup" type="Panel" parent="."]
+[node name="ExitPopup" type="Panel" parent="." unique_id=2113645913]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -389,7 +389,7 @@ offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="ExitPopup"]
+[node name="Label" type="Label" parent="ExitPopup" unique_id=206916106]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -401,7 +401,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "Yakin ingin keluar dari game?"
 
-[node name="NoButton" type="Button" parent="ExitPopup"]
+[node name="NoButton" type="Button" parent="ExitPopup" unique_id=1201213962]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -414,7 +414,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "TIDAK"
 
-[node name="YesButton" type="Button" parent="ExitPopup"]
+[node name="YesButton" type="Button" parent="ExitPopup" unique_id=1077241348]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

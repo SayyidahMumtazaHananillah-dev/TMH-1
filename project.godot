@@ -16,12 +16,17 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Main"
 run/main_scene="uid://b6ju5rp2w4oj8"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*uid://c7g6rjf2y82hl"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [filesystem]
 
@@ -71,4 +76,5 @@ senter={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 occlusion_culling/use_occlusion_culling=true
