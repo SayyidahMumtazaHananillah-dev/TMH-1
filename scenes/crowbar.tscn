@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://poujr6m8b8cb"]
+
+[ext_resource type="PackedScene" uid="uid://dmuq0vugxq7p8" path="res://assets/models/crowbar.glb" id="1_a436d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
+size = Vector3(0.087646484, 1, 0.18847656)
+
+[node name="crowbar" type="StaticBody3D" unique_id=1932982477]
+
+[node name="Sketchfab_Scene" parent="." unique_id=249809266 instance=ExtResource("1_a436d")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=404266867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.043700576)
+shape = SubResource("BoxShape3D_rekel")

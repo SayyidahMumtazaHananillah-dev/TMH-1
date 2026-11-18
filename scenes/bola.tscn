@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cvuacqyegxlvu"]
+
+[ext_resource type="PackedScene" uid="uid://b0fiw7tm8nh0i" path="res://assets/models/soccer_ball.glb" id="1_fdx0f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rekel"]
+radius = 1.0
+
+[node name="bola" type="StaticBody3D" unique_id=1977775333]
+
+[node name="Sketchfab_Scene" parent="." unique_id=897653085 instance=ExtResource("1_fdx0f")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=935700761]
+shape = SubResource("SphereShape3D_rekel")

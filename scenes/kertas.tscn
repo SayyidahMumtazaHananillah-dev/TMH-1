@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bojulh8p1f0g0"]
+
+[ext_resource type="PackedScene" uid="uid://cluqqweevndq0" path="res://assets/models/paper.glb" id="1_766mp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
+size = Vector3(0.40722656, 0.08959961, 0.625)
+
+[node name="kertas" type="StaticBody3D" unique_id=1211534359]
+
+[node name="Sketchfab_Scene" parent="." unique_id=574199984 instance=ExtResource("1_766mp")]
+transform = Transform3D(1, 0, 0, 0, -0.016445415, 0.99986476, 0, -0.99986476, -0.016445415, 0, -0.273408, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2056826715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022889733, 0.022889689, 0)
+shape = SubResource("BoxShape3D_rekel")
