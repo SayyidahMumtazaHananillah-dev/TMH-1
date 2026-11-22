@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b0fiw7tm8nh0i"
-path="res://.godot/imported/soccer_ball.glb-364062a12b6daca7a73a72ac2495799e.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/soccer_ball.glb"
-dest_files=["res://.godot/imported/soccer_ball.glb-364062a12b6daca7a73a72ac2495799e.scn"]
 
 [params]
 

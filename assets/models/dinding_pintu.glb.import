@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dowlq0deku5ar"
-path="res://.godot/imported/dinding_pintu.glb-829f970a276c3fdabb70edc59e247f74.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/dinding_pintu.glb"
-dest_files=["res://.godot/imported/dinding_pintu.glb-829f970a276c3fdabb70edc59e247f74.scn"]
 
 [params]
 

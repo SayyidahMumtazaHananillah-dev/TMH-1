@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cmqs804x05dh0"
-path="res://.godot/imported/kerangka.glb-c991eabcc58833cb64c61ff85970c5d0.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/kerangka.glb"
-dest_files=["res://.godot/imported/kerangka.glb-c991eabcc58833cb64c61ff85970c5d0.scn"]
 
 [params]
 

@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d3ldk8wyeiw5j"
-path="res://.godot/imported/broom.glb-6df133b6a021aed713d42693b9a1ca5a.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/broom.glb"
-dest_files=["res://.godot/imported/broom.glb-6df133b6a021aed713d42693b9a1ca5a.scn"]
 
 [params]
 

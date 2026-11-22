@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://6agrsw6d43qi"
-path="res://.godot/imported/dindingPutih.glb-6bd6c32fd86b1d6f66c180a11ad4f22f.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/dindingPutih.glb"
-dest_files=["res://.godot/imported/dindingPutih.glb-6bd6c32fd86b1d6f66c180a11ad4f22f.scn"]
 
 [params]
 

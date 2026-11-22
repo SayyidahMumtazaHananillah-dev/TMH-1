@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bc6kv80006pgp"
-path="res://.godot/imported/alarm_clock.glb-e7632211dcac9327cbdb3a8c63a73cd0.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/alarm_clock.glb"
-dest_files=["res://.godot/imported/alarm_clock.glb-e7632211dcac9327cbdb3a8c63a73cd0.scn"]
 
 [params]
 

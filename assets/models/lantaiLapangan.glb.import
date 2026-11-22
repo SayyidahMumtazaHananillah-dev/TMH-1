@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://oxgqym8vqiet"
-path="res://.godot/imported/lantaiLapangan.glb-561aef60380b9854eb115dc97e2cb371.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/lantaiLapangan.glb"
-dest_files=["res://.godot/imported/lantaiLapangan.glb-561aef60380b9854eb115dc97e2cb371.scn"]
 
 [params]
 

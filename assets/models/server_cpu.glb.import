@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://qwwe2g2803gu"
-path="res://.godot/imported/server_cpu.glb-2819a6394c22e9c9ac2a57ba1393f270.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/server_cpu.glb"
-dest_files=["res://.godot/imported/server_cpu.glb-2819a6394c22e9c9ac2a57ba1393f270.scn"]
 
 [params]
 

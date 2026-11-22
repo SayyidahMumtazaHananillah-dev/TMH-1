@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://rqcdd7ra0emp"
-path="res://.godot/imported/jendela.glb-fa165064a989effad0b4906a084212a2.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/jendela.glb"
-dest_files=["res://.godot/imported/jendela.glb-fa165064a989effad0b4906a084212a2.scn"]
 
 [params]
 

@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://djc47bqyjyo2d"
-path="res://.godot/imported/key.glb-28a29c675eb9833cbdb70f3e33f99c5f.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/key.glb"
-dest_files=["res://.godot/imported/key.glb-28a29c675eb9833cbdb70f3e33f99c5f.scn"]
 
 [params]
 

@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cvefqadpo4n0d"
-path="res://.godot/imported/locker.glb-f11d9de5e5c5e193be625bcf454a29bd.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/locker.glb"
-dest_files=["res://.godot/imported/locker.glb-f11d9de5e5c5e193be625bcf454a29bd.scn"]
 
 [params]
 

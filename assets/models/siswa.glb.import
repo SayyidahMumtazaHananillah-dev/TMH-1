@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c7qnny3ywk2t6"
-path="res://.godot/imported/siswa.glb-b53f9ab95f54c89f42f70bce751cb9a1.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/siswa.glb"
-dest_files=["res://.godot/imported/siswa.glb-b53f9ab95f54c89f42f70bce751cb9a1.scn"]
 
 [params]
 

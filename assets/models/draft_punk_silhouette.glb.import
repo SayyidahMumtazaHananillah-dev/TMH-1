@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://be1j8mis2xo2i"
-path="res://.godot/imported/draft_punk_silhouette.glb-12e78a7e8336ebba66afc04baccfaa71.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/draft_punk_silhouette.glb"
-dest_files=["res://.godot/imported/draft_punk_silhouette.glb-12e78a7e8336ebba66afc04baccfaa71.scn"]
 
 [params]
 

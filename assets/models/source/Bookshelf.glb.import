@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://beyykech3vi8j"
-path="res://.godot/imported/Bookshelf.glb-d695d9ebc648aa16c55e7d1533d07deb.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/source/Bookshelf.glb"
-dest_files=["res://.godot/imported/Bookshelf.glb-d695d9ebc648aa16c55e7d1533d07deb.scn"]
 
 [params]
 

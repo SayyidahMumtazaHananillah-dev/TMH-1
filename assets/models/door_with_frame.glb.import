@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dlh8nkqwvpx6p"
-path="res://.godot/imported/door_with_frame.glb-09121b111f5f9d5c9dc2e86910ff8aea.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/door_with_frame.glb"
-dest_files=["res://.godot/imported/door_with_frame.glb-09121b111f5f9d5c9dc2e86910ff8aea.scn"]
 
 [params]
 

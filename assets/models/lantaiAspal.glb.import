@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dkgc8hdur5se8"
-path="res://.godot/imported/lantaiAspal.glb-d23a258866b5c520a72c2dac71dd68a8.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/lantaiAspal.glb"
-dest_files=["res://.godot/imported/lantaiAspal.glb-d23a258866b5c520a72c2dac71dd68a8.scn"]
 
 [params]
 

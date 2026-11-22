@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bfikgjtsy8mog"
-path="res://.godot/imported/tongsampahOrganik.glb-5bf2db3c2f5c27309ecc6c1bbb79b900.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/tongsampahOrganik.glb"
-dest_files=["res://.godot/imported/tongsampahOrganik.glb-5bf2db3c2f5c27309ecc6c1bbb79b900.scn"]
 
 [params]
 

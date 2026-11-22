@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://be6qdhn58c5w7"
-path="res://.godot/imported/dindingHijau.glb-f0d8fc88efb87a27946399c59622809d.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/dindingHijau.glb"
-dest_files=["res://.godot/imported/dindingHijau.glb-f0d8fc88efb87a27946399c59622809d.scn"]
 
 [params]
 
