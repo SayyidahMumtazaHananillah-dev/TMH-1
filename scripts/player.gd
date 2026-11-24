@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+@export var offset_tangan: Vector3 = Vector3(0.35, -0.32, -0.75) # kanan bawah kamera
+@export var rotasi_tangan_deg: Vector3 = Vector3(-15.0, 20.0, -10.0)
+@export var gaya_lempar_item: float = 8.0
+@export var dorongan_naik_lempar: float = 0.15
+@export var durasi_store_kertas: float = 1.0
 @export var speed: float = 4.0
 @export var jump_velocity: float = 4.5
 @export var mouse_sensitivity: float = 0.003
@@ -40,6 +45,15 @@ var stamina_fill_style: StyleBoxFlat
 var bob_time: float = 0.0
 var camera_base_pos: Vector3 = Vector3.ZERO
 
+# --- SISTEM 1 ITEM DI TANGAN / STORE KERTAS / LEMPAR PHYSICS ---
+var item_dipegang: Node3D = null
+var _tipe_item_dipegang: String = "" # "kertas", "crowbar", "sapu", "bola", "alarm", "kunci_ruangan", "kunci_resepsionis", "kunci_gerbang"
+var _sedang_tahan_store: bool = false
+var _timer_store: float = 0.0
+var _cooldown_aksi_item: float = 0.0
+var _preview_kertas_ui: Control = null
+var _label_preview_kertas: Label = null
+
 # --- STATUS TERTANGKAP ---
 @export var look_at_guru_speed: float = 8.0       # makin besar = makin cepat menoleh ke guru
 @export var guru_head_height: float = 1.5         # tinggi titik yang dilihat (kepala guru)
@@ -70,6 +84,7 @@ func _ready() -> void:
 	if camera:
 		camera_base_pos = camera.position
 	_buat_stamina_bar()
+	_buat_preview_kertas_ui()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_cutscene: return
@@ -84,8 +99,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_E and not is_caught:
-		_coba_interaksi()
+	if event is InputEventKey and event.pressed and not event.echo and not is_caught:
+		if event.keycode == KEY_E:
+			if item_dipegang != null:
+				if _cooldown_aksi_item <= 0.0:
+					_lempar_item_dipegang()
+			else:
+				_coba_interaksi()
 
 func _coba_interaksi() -> void:
 	if not ray_cast:
@@ -126,6 +146,9 @@ func _physics_process(delta: float) -> void:
 	if is_caught:
 		_proses_tertangkap(delta)
 		return
+
+	if item_dipegang != null:
+		_proses_aksi_item_dipegang(delta)
 
 	if Input.is_action_just_pressed("senter") and senter_hp:
 		var status_baru := not senter_hp.visible
@@ -179,6 +202,173 @@ func _cek_target_interaksi() -> void:
 			return
 
 	prompt_label.visible = false
+
+# =====================================================================
+# ATURAN 1 ITEM DIPEGANG + STORE KHUSUS KERTAS + LEMPAR PHYSICS (E)
+# =====================================================================
+func bisa_ambil_item() -> bool:
+	return item_dipegang == null
+
+func pegang_item(node_item: Node3D, tipe: String) -> bool:
+	if item_dipegang != null or node_item == null:
+		return false
+
+	item_dipegang = node_item
+	_tipe_item_dipegang = tipe
+	_sedang_tahan_store = false
+	_timer_store = 0.0
+	_cooldown_aksi_item = 0.2
+
+	if tipe == "kertas":
+		node_item.visible = false
+		_tampilkan_kertas_di_layar(true)
+		print("📄 Memegang kertas | Tahan F (%.1fs) untuk simpan, tekan E untuk buang/lempar." % durasi_store_kertas)
+	else:
+		_tampilkan_kertas_di_layar(false)
+		if node_item.get_parent() != null:
+			node_item.get_parent().remove_child(node_item)
+		if camera:
+			camera.add_child(node_item)
+		node_item.position = offset_tangan
+		node_item.rotation_degrees = rotasi_tangan_deg
+		node_item.visible = true
+		if tipe == "alarm":
+			print("🚨 TRAP ALARM menyala! Tahan F (1.5s) untuk mematikan, tekan E untuk lempar.")
+		else:
+			print("✋ Memegang '%s' | Tekan E untuk lempar." % tipe)
+
+	return true
+
+func _proses_aksi_item_dipegang(delta: float) -> void:
+	if _cooldown_aksi_item > 0.0:
+		_cooldown_aksi_item -= delta
+
+	# Hanya KERTAS yang bisa di-store (tahan F 1 detik).
+	# Alarm dimatikan lewat alarm.gd (tahan F 1.5s). Item lain tidak bisa di-store.
+	if _tipe_item_dipegang != "kertas":
+		_sedang_tahan_store = false
+		_timer_store = 0.0
+		return
+
+	if Input.is_key_pressed(KEY_F):
+		_sedang_tahan_store = true
+		_timer_store += delta
+		var sisa := maxf(0.0, durasi_store_kertas - _timer_store)
+		if _label_preview_kertas and _label_preview_kertas.visible:
+			_label_preview_kertas.text = "📄 KERTAS DITEMUKAN\n[Tahan F: %.1fs] Simpan  |  [E] Buang" % sisa
+		if _timer_store >= durasi_store_kertas:
+			_simpan_kertas_dipegang()
+	else:
+		if _sedang_tahan_store:
+			_sedang_tahan_store = false
+			_timer_store = 0.0
+			if _label_preview_kertas and _label_preview_kertas.visible:
+				_label_preview_kertas.text = "📄 KERTAS DITEMUKAN\n[Tahan F: %.1fs] Simpan  |  [E] Buang" % durasi_store_kertas
+
+func _simpan_kertas_dipegang() -> void:
+	if item_dipegang == null or _tipe_item_dipegang != "kertas":
+		return
+
+	var item := item_dipegang
+	item_dipegang = null
+	_tipe_item_dipegang = ""
+	_sedang_tahan_store = false
+	_timer_store = 0.0
+	_tampilkan_kertas_di_layar(false)
+
+	if "jumlah_soal" in GameManager:
+		GameManager.jumlah_soal += 1
+		print("✅ Kertas disimpan! Total soal: ", GameManager.jumlah_soal)
+	else:
+		print("✅ Kertas disimpan!")
+
+	if is_instance_valid(item):
+		item.queue_free()
+
+func _lempar_item_dipegang() -> void:
+	if item_dipegang == null:
+		return
+
+	var item := item_dipegang
+	var tipe := _tipe_item_dipegang
+	item_dipegang = null
+	_tipe_item_dipegang = ""
+	_sedang_tahan_store = false
+	_timer_store = 0.0
+	_cooldown_aksi_item = 0.25
+	_tampilkan_kertas_di_layar(false)
+
+	var parent_dunia: Node = get_tree().current_scene
+	if item.get_parent() != null:
+		item.get_parent().remove_child(item)
+	if parent_dunia and is_instance_valid(item):
+		parent_dunia.add_child(item)
+
+	var acuan: Node3D = camera if camera else self
+	var arah := -acuan.global_transform.basis.z.normalized()
+	var impuls := (arah + Vector3(0, dorongan_naik_lempar, 0)).normalized() * gaya_lempar_item
+
+	if is_instance_valid(item):
+		item.global_position = acuan.global_position + arah * 1.15 + Vector3(0, -0.05, 0)
+		item.rotation = Vector3.ZERO
+		item.visible = true
+
+		# Kalau item punya method lempar sendiri (misal bola.gd), panggil
+		if item.has_method("terima_lemparan"):
+			item.terima_lemparan(impuls, self)
+		elif item is RigidBody3D:
+			var rb := item as RigidBody3D
+			rb.freeze = false
+			rb.sleeping = false
+			rb.linear_velocity = Vector3.ZERO
+			rb.angular_velocity = Vector3.ZERO
+			rb.apply_central_impulse(impuls)
+
+	print("💨 '%s' dilempar!" % tipe)
+
+func _buat_preview_kertas_ui() -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 10
+	add_child(layer)
+
+	_preview_kertas_ui = Control.new()
+	_preview_kertas_ui.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_preview_kertas_ui.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_preview_kertas_ui.visible = false
+	layer.add_child(_preview_kertas_ui)
+
+	var panel := Panel.new()
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.anchor_left = 0.5
+	panel.anchor_right = 0.5
+	panel.anchor_top = 0.5
+	panel.anchor_bottom = 0.5
+	panel.offset_left = -220.0
+	panel.offset_right = 220.0
+	panel.offset_top = -150.0
+	panel.offset_bottom = 150.0
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.95, 0.92, 0.84, 0.96)
+	style.border_color = Color(0.25, 0.18, 0.12, 1.0)
+	style.set_border_width_all(3)
+	style.set_corner_radius_all(8)
+	panel.add_theme_stylebox_override("panel", style)
+	_preview_kertas_ui.add_child(panel)
+
+	_label_preview_kertas = Label.new()
+	_label_preview_kertas.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_label_preview_kertas.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_label_preview_kertas.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_label_preview_kertas.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_label_preview_kertas.add_theme_color_override("font_color", Color(0.15, 0.1, 0.06, 1.0))
+	_label_preview_kertas.text = "📄 KERTAS DITEMUKAN\n[Tahan F: %.1fs] Simpan  |  [E] Buang" % durasi_store_kertas
+	panel.add_child(_label_preview_kertas)
+
+func _tampilkan_kertas_di_layar(tampil: bool) -> void:
+	if _preview_kertas_ui:
+		_preview_kertas_ui.visible = tampil
+	if _label_preview_kertas and tampil:
+		_label_preview_kertas.text = "📄 KERTAS DITEMUKAN\n[Tahan F: %.1fs] Simpan  |  [E] Buang" % durasi_store_kertas
 
 func _buat_stamina_bar() -> void:
 	var layer := CanvasLayer.new()

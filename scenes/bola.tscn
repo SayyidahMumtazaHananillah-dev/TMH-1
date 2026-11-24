@@ -6,10 +6,12 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_rekel"]
 radius = 1.0
 
-[node name="bola" type="StaticBody3D" unique_id=1977775333]
+[node name="bola" type="RigidBody3D" unique_id=208540282]
 script = ExtResource("1_372x7")
 
 [node name="Sketchfab_Scene" parent="." unique_id=897653085 instance=ExtResource("1_fdx0f")]
+transform = Transform3D(0.19275504, 0, 0, 0, 0.19275504, 0, 0, 0, 0.19275504, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=935700761]
+transform = Transform3D(0.19275504, 0, 0, 0, 0.19275504, 0, 0, 0, 0.19275504, 0, 0, 0)
 shape = SubResource("SphereShape3D_rekel")

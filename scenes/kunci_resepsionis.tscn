@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://ba0mlfgyg0gja"]
 
+[ext_resource type="Script" uid="uid://dwfoehhdd8xal" path="res://scripts/kunci_resepsionis.gd" id="1_4qk76"]
 [ext_resource type="PackedScene" uid="uid://djc47bqyjyo2d" path="res://assets/models/key.glb" id="1_b23ge"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
 size = Vector3(1, 2.1064453, 6.8984375)
 
 [node name="kunci_resepsionis" type="StaticBody3D" unique_id=992401958]
+script = ExtResource("1_4qk76")
 
 [node name="Sketchfab_Scene" parent="." unique_id=136059595 instance=ExtResource("1_b23ge")]
 transform = Transform3D(0.10228125, 0, 0, 0, 0.10228125, 0, 0, 0, 0.10228125, 0, -3.5490944, 0)

@@ -1762,7 +1762,7 @@ light_energy = 0.2
 [node name="item" type="Node" parent="." unique_id=893459706]
 
 [node name="bola" parent="item" unique_id=1977775333 instance=ExtResource("56_sa5x5")]
-transform = Transform3D(0.10122867, 0, 0, 0, 0.10122867, 0, 0, 0, 0.10122867, 12.358041, 0.4132802, -43.491844)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.358041, 0.4132802, -43.491844)
 
 [node name="foto" parent="item" unique_id=505933784 instance=ExtResource("57_dr1qi")]
 transform = Transform3D(0.0065643652, -0.023980236, -0.032887455, 0.04060472, 0.0015589129, 0.0069680423, -0.0028094333, -0.03349993, 0.02386607, 9.832604, 1.47885, -49.507675)

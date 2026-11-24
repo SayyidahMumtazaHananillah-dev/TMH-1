@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://c63m42qmhsbg6"]
 
 [ext_resource type="PackedScene" uid="uid://bc6kv80006pgp" path="res://assets/models/alarm_clock.glb" id="1_60k40"]
+[ext_resource type="Script" uid="uid://cgku8f4e2ird6" path="res://scripts/alarm.gd" id="1_y63g5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
 size = Vector3(0.14624023, 0.18359375, 0.087890625)
 
 [node name="alarm" type="StaticBody3D" unique_id=1729284803]
+script = ExtResource("1_y63g5")
 
 [node name="Sketchfab_Scene" parent="." unique_id=1026812800 instance=ExtResource("1_60k40")]
 
