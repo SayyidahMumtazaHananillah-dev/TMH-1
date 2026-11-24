@@ -102,10 +102,48 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and not is_caught:
 		if event.keycode == KEY_E:
 			if item_dipegang != null:
-				if _cooldown_aksi_item <= 0.0:
+				if _sedang_menghadap_target_item():
+					_coba_interaksi()
+				elif _cooldown_aksi_item <= 0.0:
 					_lempar_item_dipegang()
 			else:
 				_coba_interaksi()
+
+func _sedang_menghadap_target_item() -> bool:
+	if not ray_cast or not ray_cast.is_colliding():
+		return false
+
+	var hit_object: Object = ray_cast.get_collider()
+	var target: Node = hit_object as Node
+	while target:
+		if target.has_method("interact"):
+			if _tipe_item_dipegang == "kunci_ruangan":
+				if "punya_kunci_ruangan" in GameManager:
+					GameManager.punya_kunci_ruangan = true
+				return true
+			if _tipe_item_dipegang == "kunci_resepsionis":
+				if "punya_kunci_resepsionis" in GameManager:
+					GameManager.punya_kunci_resepsionis = true
+				return true
+			if _tipe_item_dipegang == "kunci_gerbang":
+				if "punya_kunci_gerbang" in GameManager:
+					GameManager.punya_kunci_gerbang = true
+				return true
+			if _tipe_item_dipegang == "crowbar":
+				if "punya_linggis" in GameManager:
+					GameManager.punya_linggis = true
+				return true
+			return false
+		target = target.get_parent()
+
+	if _tipe_item_dipegang == "crowbar" and hit_object != null:
+		var node_hit := hit_object as Node
+		if node_hit and (node_hit.name == "rolling" or (node_hit.get_parent() and node_hit.get_parent().name == "rolling")):
+			if "punya_linggis" in GameManager:
+				GameManager.punya_linggis = true
+			return true
+
+	return false
 
 func _coba_interaksi() -> void:
 	if not ray_cast:
@@ -309,7 +347,18 @@ func _lempar_item_dipegang() -> void:
 	var impuls := (arah + Vector3(0, dorongan_naik_lempar, 0)).normalized() * gaya_lempar_item
 
 	if is_instance_valid(item):
-		item.global_position = acuan.global_position + arah * 1.15 + Vector3(0, -0.05, 0)
+		var posisi_awal_cek := global_position + Vector3(0.0, 1.2, 0.0)
+		var posisi_tujuan := acuan.global_position + arah * 1.15 + Vector3(0.0, -0.05, 0.0)
+		var posisi_spawn := posisi_tujuan
+
+		var space := get_world_3d().direct_space_state
+		var query := PhysicsRayQueryParameters3D.create(posisi_awal_cek, posisi_tujuan)
+		query.exclude = [self, item]
+		var hit := space.intersect_ray(query)
+		if not hit.is_empty():
+			posisi_spawn = (hit.position as Vector3) + (hit.normal as Vector3) * 0.2
+
+		item.global_position = posisi_spawn
 		item.rotation = Vector3.ZERO
 		item.visible = true
 

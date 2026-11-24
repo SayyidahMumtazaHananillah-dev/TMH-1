@@ -1645,6 +1645,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.3985
 
 [node name="tongSampah_pendek" parent="InteractableProp" unique_id=61547981 groups=["spawn_tong_sampah"] instance=ExtResource("26_xuqvo")]
 transform = Transform3D(0.2, 0, 0, 0, 0.3, 0, 0, 0, 0.2, 7.46816, 1.049, -18.042)
+scene_kertas = ExtResource("59_rqgha")
+scene_crowbar = ExtResource("61_6s0ug")
 
 [node name="AreaInteraksi" type="Area3D" parent="InteractableProp/tongSampah_pendek" unique_id=2080511354]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.384224, 0, 0.0963898)

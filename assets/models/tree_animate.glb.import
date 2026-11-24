@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b3eu13l0fenkb"
-valid=false
+path="res://.godot/imported/tree_animate.glb-b52c667e42d381be369b6e439d9d4ced.scn"
 
 [deps]
 
 source_file="res://assets/models/tree_animate.glb"
+dest_files=["res://.godot/imported/tree_animate.glb-b52c667e42d381be369b6e439d9d4ced.scn"]
 
 [params]
 

@@ -79,6 +79,23 @@ func _proses_jatuh_lempar(delta: float) -> void:
 
 	var grav := float(ProjectSettings.get_setting("physics/3d/default_gravity"))
 	_kecepatan_lempar.y -= grav * delta
+
+	var langkah := _kecepatan_lempar * delta
+	if langkah.length() > 0.0001:
+		var space := get_world_3d().direct_space_state
+		var query := PhysicsRayQueryParameters3D.create(global_position, global_position + langkah + langkah.normalized() * 0.14)
+		query.exclude = [self]
+		var hit := space.intersect_ray(query)
+		if not hit.is_empty():
+			var normal := hit.normal as Vector3
+			global_position = (hit.position as Vector3) + normal * 0.14
+			_kecepatan_lempar.x = 0.0
+			_kecepatan_lempar.z = 0.0
+			if normal.y < 0.5:
+				_kecepatan_lempar.y = minf(_kecepatan_lempar.y, -1.5)
+			else:
+				_kecepatan_lempar.y = 0.0
+
 	global_position += _kecepatan_lempar * delta
 
 	# Redam gerak mendatar biar nggak meluncur kejauhan
@@ -89,14 +106,16 @@ func _proses_jatuh_lempar(delta: float) -> void:
 	if _kecepatan_lempar.y <= 0.0:
 		var space := get_world_3d().direct_space_state
 		var start := global_position + Vector3(0.0, 0.25, 0.0)
-		var end := global_position + Vector3(0.0, -0.35, 0.0)
+		var end := global_position + Vector3(0.0, -2.0, 0.0)
 		var query := PhysicsRayQueryParameters3D.create(start, end)
 		query.exclude = [self]
 		var hit := space.intersect_ray(query)
 		if not hit.is_empty():
-			global_position.y = (hit.position as Vector3).y + 0.04
-			_kecepatan_lempar = Vector3.ZERO
-			_sedang_terlempar = false
+			var lantai_y := (hit.position as Vector3).y + 0.04
+			if global_position.y <= lantai_y:
+				global_position.y = lantai_y
+				_kecepatan_lempar = Vector3.ZERO
+				_sedang_terlempar = false
 
 func _set_collision_aktif(aktif: bool) -> void:
 	for child in find_children("*", "CollisionShape3D", true, false):

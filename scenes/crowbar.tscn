@@ -10,7 +10,8 @@ size = Vector3(0.087646484, 1, 0.18847656)
 script = ExtResource("1_ax20u")
 
 [node name="Sketchfab_Scene" parent="." unique_id=249809266 instance=ExtResource("1_a436d")]
+transform = Transform3D(-0.012952844, 0.99991614, 0, -0.99991614, -0.012952844, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=404266867]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.043700576)
+transform = Transform3D(-0.012952844, 0.99991614, 0, -0.99991614, -0.012952844, 0, 0, 0, 1, 0, 0, 0.043700576)
 shape = SubResource("BoxShape3D_rekel")

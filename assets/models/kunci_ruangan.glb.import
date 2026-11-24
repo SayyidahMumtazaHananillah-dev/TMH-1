@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://txasl6e25c0e"
-valid=false
+path="res://.godot/imported/kunci_ruangan.glb-ad078e6b749e760fabf476687532d3af.scn"
 
 [deps]
 
 source_file="res://assets/models/kunci_ruangan.glb"
+dest_files=["res://.godot/imported/kunci_ruangan.glb-ad078e6b749e760fabf476687532d3af.scn"]
 
 [params]
 

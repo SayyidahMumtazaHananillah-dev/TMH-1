@@ -14,6 +14,7 @@ var _pemegang: Node3D = null
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = max(max_contacts_reported, 4)
+	continuous_cd = true
 	if linear_damp < 0.15:
 		linear_damp = 0.25
 	if angular_damp < 0.2:
@@ -30,7 +31,17 @@ func _physics_process(delta: float) -> void:
 	if _sedang_dipegang and is_instance_valid(_pemegang):
 		var cam: Camera3D = _pemegang.get_node_or_null("Camera3D")
 		var acuan: Node3D = cam if cam else _pemegang
-		global_position = acuan.global_position + (-acuan.global_transform.basis.z * 1.1) + Vector3(0, -0.05, 0)
+		var arah := -acuan.global_transform.basis.z.normalized()
+		var jarak := 1.1
+
+		var space := get_world_3d().direct_space_state
+		var query := PhysicsRayQueryParameters3D.create(acuan.global_position, acuan.global_position + arah * jarak)
+		query.exclude = [self, _pemegang]
+		var hit := space.intersect_ray(query)
+		if not hit.is_empty():
+			jarak = clampf(acuan.global_position.distance_to(hit.position as Vector3) - 0.22, 0.2, 1.1)
+
+		global_position = acuan.global_position + (arah * jarak) + Vector3(0, -0.05, 0)
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
 
@@ -43,7 +54,6 @@ func interact() -> void:
 		push_warning("Bola: node dalam group 'player' tidak ditemukan!")
 		return
 
-	# Cek aturan 1 item di tangan jika metode tersedia di player
 	if player.has_method("bisa_ambil_item") and not player.bisa_ambil_item():
 		print("⚠️ Kamu cuma bisa megang 1 item! Tahan F (1s) buat simpan atau E buat buang.")
 		return
@@ -71,18 +81,35 @@ func _lempar_bola() -> void:
 	_cooldown_ambil_timer = cooldown_ambil
 
 	var arah := -global_transform.basis.z.normalized()
+	var posisi_spawn := global_position
+	var arah_lempar := arah
+
 	if is_instance_valid(_pemegang):
 		var cam: Camera3D = _pemegang.get_node_or_null("Camera3D")
 		var acuan: Node3D = cam if cam else _pemegang
 		arah = -acuan.global_transform.basis.z.normalized()
-		global_position = acuan.global_position + (arah * 1.35) + Vector3(0, 0.05, 0)
+		arah_lempar = arah
 
+		var jarak_spawn := 1.35
+		var space := get_world_3d().direct_space_state
+		var query := PhysicsRayQueryParameters3D.create(acuan.global_position, acuan.global_position + arah * jarak_spawn)
+		query.exclude = [self, _pemegang]
+		var hit := space.intersect_ray(query)
+		if not hit.is_empty():
+			var normal := hit.normal as Vector3
+			posisi_spawn = (hit.position as Vector3) + normal * 0.25 + Vector3(0, 0.05, 0)
+			# Arahkan lemparan menjauh/menyamping dari dinding supaya tidak menempel/terjepit
+			arah_lempar = (arah + normal * 0.5).normalized()
+		else:
+			posisi_spawn = acuan.global_position + (arah * jarak_spawn) + Vector3(0, 0.05, 0)
+
+	global_position = posisi_spawn
 	freeze = false
 	sleeping = false
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 
-	var vektor_lempar := (arah + Vector3(0, dorongan_naik, 0)).normalized() * gaya_lempar
+	var vektor_lempar := (arah_lempar + Vector3(0, dorongan_naik, 0)).normalized() * gaya_lempar
 	apply_central_impulse(vektor_lempar)
 	print("💨 Bola dilempar pelan!")
 

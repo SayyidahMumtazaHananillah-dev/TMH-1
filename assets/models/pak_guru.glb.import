@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://datgf0rpupj57"
-valid=false
+path="res://.godot/imported/pak_guru.glb-5cc613f422570af0cc399bacf8b92348.scn"
 
 [deps]
 
 source_file="res://assets/models/pak_guru.glb"
+dest_files=["res://.godot/imported/pak_guru.glb-5cc613f422570af0cc399bacf8b92348.scn"]
 
 [params]
 

@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c8min0h5e7akk"
-valid=false
+path="res://.godot/imported/kursi_kantor.glb-3038b2a266baad22a2ab7a02123625f9.scn"
 
 [deps]
 
 source_file="res://assets/models/kursi_kantor.glb"
+dest_files=["res://.godot/imported/kursi_kantor.glb-3038b2a266baad22a2ab7a02123625f9.scn"]
 
 [params]
 

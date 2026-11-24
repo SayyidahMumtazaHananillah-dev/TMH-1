@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://81w31oiqk466"
-valid=false
+path="res://.godot/imported/flagpole_-_kiwi_laser_eyes.glb-c0ba0db2ad4f12829f7d86b137d18ba6.scn"
 
 [deps]
 
 source_file="res://assets/models/flagpole_-_kiwi_laser_eyes.glb"
+dest_files=["res://.godot/imported/flagpole_-_kiwi_laser_eyes.glb-c0ba0db2ad4f12829f7d86b137d18ba6.scn"]
 
 [params]
 

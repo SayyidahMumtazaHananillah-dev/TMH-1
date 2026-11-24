@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dmdt3rapuljjf"
-valid=false
+path="res://.godot/imported/gerbang.glb-bc5c67fe3f62cd6abf7c5ef78bdd1bb1.scn"
 
 [deps]
 
 source_file="res://assets/models/gerbang.glb"
+dest_files=["res://.godot/imported/gerbang.glb-bc5c67fe3f62cd6abf7c5ef78bdd1bb1.scn"]
 
 [params]
 

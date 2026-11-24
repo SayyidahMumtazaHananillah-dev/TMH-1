@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c8brg4ynsg7wp"
-valid=false
+path="res://.godot/imported/pohon2.glb-c9c8a3829e4c2915a785ae4d230127a9.scn"
 
 [deps]
 
 source_file="res://assets/models/pohon2.glb"
+dest_files=["res://.godot/imported/pohon2.glb-c9c8a3829e4c2915a785ae4d230127a9.scn"]
 
 [params]
 

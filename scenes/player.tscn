@@ -30,15 +30,15 @@ script = ExtResource("1_g2els")
 shape = SubResource("CapsuleShape3D_wnkbs")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1322826401]
-transform = Transform3D(0.9999984, 0.00066026975, 0.0016871288, -0.0006755453, 0.9999587, 0.009069712, -0.0016810707, -0.009070838, 0.99995744, 0, 0.87544566, -0.34553474)
+transform = Transform3D(0.9999984, 0.00066026975, 0.0016871288, -0.0006755453, 0.9999587, 0.009069712, -0.0016810707, -0.009070838, 0.99995744, 0, 0.87544566, -0.09523928)
 fov = 63.4
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=2139234714]
-transform = Transform3D(0.999998, 0.00174533, 0, -0.00174506, 0.999847, 0.0174524, 3.04602e-05, -0.0174524, 0.999848, 0, 0, 0)
+transform = Transform3D(0.9999981, 0.0017453304, -2.3283064e-10, -0.00174506, 0.9998471, 0.017452408, 3.0460418e-05, -0.017452404, 0.999848, -4.622544e-05, -0.00024944544, 0.02749645)
 target_position = Vector3(0, 0, -1.5)
 
 [node name="senterHp" type="SpotLight3D" parent="Camera3D" unique_id=2025372613]
-transform = Transform3D(1, -9.09495e-13, -4.65661e-10, -4.54747e-12, 1, 9.31323e-10, 4.65661e-10, 0, 1, 0.00237598, -0.137179, -1.21331)
+transform = Transform3D(1.0000001, 0, -4.656613e-10, -5.456968e-12, 1.0000001, 9.313226e-10, 5.820766e-10, 0, 1, 0.0028937322, -0.13438529, -1.5212865)
 light_color = Color(0.667076, 0.721913, 0.621661, 1)
 light_energy = 3.0
 light_projector = SubResource("GradientTexture2D_g2els")
@@ -50,7 +50,7 @@ spot_angle = 42.0
 spot_angle_attenuation = 2.2
 
 [node name="senterTengah" type="SpotLight3D" parent="Camera3D" unique_id=90500686]
-transform = Transform3D(1, -9.09495e-13, -4.65661e-10, -4.54747e-12, 1, 9.31323e-10, 4.65661e-10, 0, 1, 0.00237598, -0.137179, -1.21331)
+transform = Transform3D(1.0000001, 0, -4.656613e-10, -5.456968e-12, 1.0000001, 9.313226e-10, 5.820766e-10, 0, 1, 0.0028937322, -0.13438529, -1.5212865)
 light_color = Color(0.667076, 0.721913, 0.621661, 1)
 light_energy = 1.2
 light_projector = SubResource("GradientTexture2D_g2els")

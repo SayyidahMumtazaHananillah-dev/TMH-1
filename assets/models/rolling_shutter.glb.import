@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://w1qjmjbr0531"
-valid=false
+path="res://.godot/imported/rolling_shutter.glb-1e0778ea908d5c0e4e8d5f2b428a4293.scn"
 
 [deps]
 
 source_file="res://assets/models/rolling_shutter.glb"
+dest_files=["res://.godot/imported/rolling_shutter.glb-1e0778ea908d5c0e4e8d5f2b428a4293.scn"]
 
 [params]
 
