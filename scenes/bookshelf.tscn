@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://cdru6i0ic0bc6"]
+[gd_scene format=4 uid="uid://cdru6i0ic0bc6"]
 
-[ext_resource type="Texture2D" uid="uid://cb4fwhhljpqpt" path="res://assets/models/ASSETS/kerangka_shelf.jpg" id="1_as83l"]
-[ext_resource type="Texture2D" uid="uid://du6tlx5p7o3og" path="res://assets/models/ASSETS/kerangka_books.jpg" id="2_5flan"]
+[ext_resource type="Texture2D" uid="uid://cb4fwhhljpqpt" path="res://assets/models/kerangka_shelf.jpg" id="1_as83l"]
+[ext_resource type="Texture2D" uid="uid://du6tlx5p7o3og" path="res://assets/models/kerangka_books.jpg" id="2_5flan"]
+[ext_resource type="Script" uid="uid://ceqhklx8ildct" path="res://scripts/bookshelf.gd" id="3_kkcsm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjye8"]
 resource_name = "Bookshelf"
@@ -76,13 +77,14 @@ shadow_mesh = SubResource("ArrayMesh_8lhhl")
 [sub_resource type="BoxShape3D" id="BoxShape3D_cyyaw"]
 size = Vector3(3.59045, 2.02023, 2.07083)
 
-[node name="Bookshelf" type="MeshInstance3D"]
+[node name="Bookshelf" type="MeshInstance3D" unique_id=1254775547]
 transform = Transform3D(0.0603515, 0, 0, 0, 0.575092, 0, 0, 0, 0.308478, 0, 0, 0)
 mesh = SubResource("ArrayMesh_eb57a")
 skeleton = NodePath("")
+script = ExtResource("3_kkcsm")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=606408228]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1485795701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.722107, 0.0229645, -0.0138092)
 shape = SubResource("BoxShape3D_cyyaw")

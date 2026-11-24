@@ -13,7 +13,7 @@ const JUMP_VELOCITY = 4.5
 const MIN_PITCH = deg_to_rad(-89.0)
 const MAX_PITCH = deg_to_rad(89.0)
 
-# Mengambil node Camera3D, SenterHP, dan Crosshair
+# Mengambil node Camera3D, SenterH	P, dan Crosshair
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var senter_hp: SpotLight3D = $Camera3D/senterHp
 @onready var crosshair: ColorRect = $CanvasLayer/Control/Crosshair

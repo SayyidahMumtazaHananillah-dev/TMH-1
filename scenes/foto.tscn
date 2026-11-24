@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://c7pm8qvmbw7hi"]
 
 [ext_resource type="PackedScene" uid="uid://dytc4x54we4i0" path="res://assets/models/foto.glb" id="1_bvxip"]
+[ext_resource type="Script" uid="uid://d4d2yuh560k6s" path="res://scripts/foto.gd" id="1_woucc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
 size = Vector3(5.811035, 0.7792969, 4.7164307)
 
 [node name="foto" type="StaticBody3D" unique_id=505933784]
+script = ExtResource("1_woucc")
 
 [node name="Sketchfab_Scene" parent="." unique_id=66557103 instance=ExtResource("1_bvxip")]
 transform = Transform3D(0.14846788, 0.11088755, -0.105033554, -0.09052467, 0.18186466, 0.064041644, 0.123017795, 2.8447698e-09, 0.17388912, -1.7245789, -3.0949469, -0.36921668)

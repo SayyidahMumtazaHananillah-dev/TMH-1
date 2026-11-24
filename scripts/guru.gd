@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@export var nonaktif_saat_tes: bool = false # centang / set true kalau lagi tes map
+
 @export var chase_speed := 4.0
 @export var walk_speed := 1.5
 @export var attack_range := 1.5
@@ -35,6 +37,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if nonaktif_saat_tes:
+		return
+
 	# JIKA GURU LAGI PINGSAN (DIKENAKAN SAPU)
 	if is_stunned:
 		velocity.x = 0
@@ -163,6 +168,14 @@ func kena_sapu() -> void:
 	if GameManager.hit_guru_count >= 5:
 		print("🎉 Kunci Resepsionis telah dijatuhkan oleh Guru!")
 		# Di sini nanti bisa ditambahin fungsi spawn item Kunci Resepsionis di map
+
+
+func dengar_alarm(posisi_suara: Vector3) -> void:
+	if nonaktif_saat_tes or is_stunned:
+		return
+	wander_target = Vector3(posisi_suara.x, global_position.y, posisi_suara.z)
+	is_wandering = true
+	wander_timer = 0.0
 
 
 func _set_new_wander_target() -> void:

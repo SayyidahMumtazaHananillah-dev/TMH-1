@@ -25,7 +25,6 @@ GameManager="*uid://c7g6rjf2y82hl"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [filesystem]

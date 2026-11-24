@@ -1,4 +1,4 @@
-extends Area3D
+extends Node3D
 
 @export var nomor_pintu: int = 1
 @export var pintu_mesh: Node3D          # node pintu yang kelihatan di game

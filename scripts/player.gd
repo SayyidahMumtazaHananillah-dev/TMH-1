@@ -54,6 +54,7 @@ var guru_penangkap: Node3D = null
 @onready var prompt_label: Label = get_tree().root.find_child("PromptLabel", true, false)
 
 func _ready() -> void:
+	print("ANIM PLAYER: ", find_child("AnimationPlayer", true, false))
 	speed = 4.0
 	sprint_speed = 6.0
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -71,6 +72,7 @@ func _ready() -> void:
 	_buat_stamina_bar()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_cutscene: return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and not is_caught:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		if camera:
@@ -104,14 +106,22 @@ func _coba_interaksi() -> void:
 			target = target.get_parent()
 		
 		if not found:
+			# Cuma "rolling" (bukan "rolling2") yang bisa dibuka, dan wajib punya crowbar
 			if hit_object.name == "rolling" or (hit_object.get_parent() and hit_object.get_parent().name == "rolling"):
 				var pintu_node = hit_object if hit_object.name == "rolling" else hit_object.get_parent()
-				if not rolling_player.playing:
+				if not GameManager.punya_linggis:
+					print("🔒 Rolling door terkunci! Butuh crowbar.")
+					return
+				if pintu_node.get_meta("sudah_terbuka", false):
+					return
+				pintu_node.set_meta("sudah_terbuka", true)
+				if rolling_player and not rolling_player.playing:
 					rolling_player.play()
 				var tween = create_tween()
 				tween.tween_property(pintu_node, "position:y", pintu_node.position.y + 4.0, 1.0)
 
 func _physics_process(delta: float) -> void:
+	if is_cutscene: return
 	# Kalau lagi ketangkap: tidak bisa gerak, cuma menoleh ke guru
 	if is_caught:
 		_proses_tertangkap(delta)
@@ -166,8 +176,6 @@ func _cek_target_interaksi() -> void:
 		
 		if bisa_interaksi:
 			prompt_label.visible = true
-			
-			
 			return
 
 	prompt_label.visible = false
@@ -428,6 +436,7 @@ var _anim_ready: bool = false
 
 
 func _process(_delta: float) -> void:
+	if is_cutscene: return
 	if not _anim_ready:
 		_setup_animation()
 		return
@@ -475,3 +484,19 @@ func _play_anim(anim_name: StringName, speed_scale: float) -> void:
 		_anim_current = anim_name
 		_anim_player.play(anim_name, 0.2) # blend 0.2 detik
 	_anim_player.speed_scale = speed_scale
+
+
+# ===== CUTSCENE =====
+var is_cutscene: bool = false
+
+func mulai_cutscene() -> void:
+	is_cutscene = true
+	velocity = Vector3.ZERO
+	if langkah_player and langkah_player.playing:
+		langkah_player.stop()
+	_set_hud_visible(false)
+
+func selesai_cutscene() -> void:
+	is_cutscene = false
+	_set_hud_visible(true)
+	camera.make_current()

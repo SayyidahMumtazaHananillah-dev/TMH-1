@@ -1,13 +1,13 @@
-[gd_scene load_steps=21 format=4 uid="uid://lke21wsodd14"]
+[gd_scene format=4 uid="uid://lke21wsodd14"]
 
 [ext_resource type="Texture2D" uid="uid://b8jffyeqtundw" path="res://assets/models/kerangka_Image_0_135.jpg" id="1_o2ha5"]
 [ext_resource type="Texture2D" uid="uid://dee74dpcetw23" path="res://assets/models/kerangka_Image_1_136.jpg" id="2_vk3ke"]
 [ext_resource type="Texture2D" uid="uid://okpa2nqj62fx" path="res://assets/models/kerangka_Image_2_134.jpg" id="3_ipwup"]
-[ext_resource type="Texture2D" uid="uid://c5dywryaky804" path="res://assets/models/ASSETS/kerangka_coated_pine_diff_4k.jpg" id="4_5km1c"]
+[ext_resource type="Texture2D" uid="uid://c5dywryaky804" path="res://assets/models/kerangka_coated_pine_diff_4k.jpg" id="4_5km1c"]
 [ext_resource type="Texture2D" uid="uid://cpcare71yub2c" path="res://assets/models/kerangka_Image_1-Image_0.jpg" id="5_hsqj3"]
-[ext_resource type="Texture2D" uid="uid://c7pccml6hxnxl" path="res://assets/models/ASSETS/kerangka_Image_0_141.jpg" id="6_wfi08"]
+[ext_resource type="Texture2D" uid="uid://c7pccml6hxnxl" path="res://assets/models/kerangka_Image_0_141.jpg" id="6_wfi08"]
 [ext_resource type="Texture2D" uid="uid://6xjueqpwcsb5" path="res://assets/models/kerangka_Image_1_140.jpg" id="7_s0gom"]
-[ext_resource type="Texture2D" uid="uid://bfo6y8wn7f2qp" path="res://assets/models/ASSETS/kerangka_Image_2_139.jpg" id="8_lihyx"]
+[ext_resource type="Texture2D" uid="uid://bfo6y8wn7f2qp" path="res://assets/models/kerangka_Image_2_139.jpg" id="8_lihyx"]
 [ext_resource type="Texture2D" uid="uid://qvfywmjqiiyu" path="res://assets/models/kerangka_Image_5-Image_4.jpg" id="9_yq14b"]
 [ext_resource type="Texture2D" uid="uid://dsqm3xdstlnuf" path="res://assets/models/kerangka_Image_3-Image_2.jpg" id="10_tanh6"]
 
@@ -265,15 +265,15 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j3a23")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2ha5"]
-size = Vector3(0.855957, 0.830078, 0.485413)
+size = Vector3(0.855957, 0.5321655, 0.485413)
 
-[node name="cpu" type="MeshInstance3D"]
+[node name="cpu" type="MeshInstance3D" unique_id=979745136]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_hpikb")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1238072070]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.180605, 0.454523, -0.0111389)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1953964152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.180605, 0.30556676, -0.0111389)
 shape = SubResource("BoxShape3D_o2ha5")

@@ -1,31 +1,39 @@
-extends Area3D
+extends Node3D
 
-var sudah_diaduk: bool = false
+@export var max_interaksi: int = 5
+@export_range(0.0, 1.0) var peluang_alarm: float = 0.18
+
+var jumlah_interaksi: int = 0
+var antrean_isi: Array[String] = []
 
 func interact() -> void:
-	if sudah_diaduk:
-		print("🗑️ Tong sampah ini sudah kosong!")
+	if jumlah_interaksi >= max_interaksi:
+		print("🗑️ Tong sampah ini sudah tidak bisa diaduk lagi!")
 		return
 
-	sudah_diaduk = true
-	var gacha = randi_range(1, 3)
+	jumlah_interaksi += 1
 
-	match gacha:
-		1:
-			GameManager.jumlah_soal += 1
-			print("📄 Dapat KERTAS SOAL! (" + str(GameManager.jumlah_soal) + "/5)")
-		2:
-			if not GameManager.punya_linggis:
-				GameManager.punya_linggis = true
-				print("🔧 Kamu menemukan LINGGIS!")
-			else:
+	# Cek pemicu alarm dulu dengan peluang kecil
+	if randf() < peluang_alarm:
+		print("🚨 PRANG! Tutup tong sampah berisik, guru mengarah ke sini!")
+		_panggil_guru()
+		return
+
+	# Ambil item dari antrean jika ada
+	if not antrean_isi.is_empty():
+		var item: String = antrean_isi.pop_front()
+		match item:
+			"kertas_soal":
 				GameManager.jumlah_soal += 1
-				print("📄 Dapat KERTAS SOAL! (" + str(GameManager.jumlah_soal) + "/5)")
-		3:
-			print("🚨 ALARM BUNYI! Guru mengarah ke sini!")
-			_bunyikan_alarm()
+				print("📄 Dapat KERTAS SOAL dari tong sampah! (" + str(GameManager.jumlah_soal) + "/5)")
+			"crowbar":
+				GameManager.punya_linggis = true
+				print("🔧 Dapat CROWBAR!")
+		return
 
-func _bunyikan_alarm() -> void:
+	print("🗑️ Zonk! Cuma sampah kertas bekas.")
+
+func _panggil_guru() -> void:
 	var guru = get_tree().get_first_node_in_group("guru")
 	if guru and guru.has_method("dengar_alarm"):
 		guru.dengar_alarm(global_position)

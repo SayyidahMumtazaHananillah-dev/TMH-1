@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bojulh8p1f0g0"]
 
 [ext_resource type="PackedScene" uid="uid://cluqqweevndq0" path="res://assets/models/paper.glb" id="1_766mp"]
+[ext_resource type="Script" uid="uid://bxkmopq3xo3a6" path="res://scripts/kertas.gd" id="1_yk7m2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
 size = Vector3(0.40722656, 0.08959961, 0.625)
 
 [node name="kertas" type="StaticBody3D" unique_id=1211534359]
+script = ExtResource("1_yk7m2")
 
 [node name="Sketchfab_Scene" parent="." unique_id=574199984 instance=ExtResource("1_766mp")]
 transform = Transform3D(1, 0, 0, 0, -0.016445415, 0.99986476, 0, -0.99986476, -0.016445415, 0, -0.273408, 0)

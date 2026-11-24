@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://c0k8wxmv3d5o0"]
 
+[ext_resource type="Script" uid="uid://8iy1phfvffvq" path="res://scripts/kunci_gerbang.gd" id="1_ufy8x"]
 [ext_resource type="PackedScene" uid="uid://c3ytf5n8qe5d5" path="res://assets/models/master_keys.glb" id="1_wq7i3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
 size = Vector3(1, 2.163086, 1)
 
 [node name="kunci_gerbang" type="StaticBody3D" unique_id=1305920367]
+script = ExtResource("1_ufy8x")
 
 [node name="Sketchfab_Scene" parent="." unique_id=1923278761 instance=ExtResource("1_wq7i3")]
 transform = Transform3D(0.19643986, 0, 0, 0, 0.19643986, 0, 0, 0, 0.19643986, 0, 0, 0)

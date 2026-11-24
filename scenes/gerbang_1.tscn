@@ -1,18 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp44aqcamux4n"]
+[gd_scene format=3 uid="uid://bp44aqcamux4n"]
 
-[ext_resource type="PackedScene" uid="uid://br653o3j12nno" path="res://assets/models/gerbang1.glb" id="1_uwv75"]
+[ext_resource type="PackedScene" uid="uid://dujxycsb5kh64" path="res://assets/models/gerbang1.glb" id="1_uwv75"]
+[ext_resource type="Script" uid="uid://djgys1tgwixum" path="res://scripts/gerbang_1.gd" id="2_fjf6e"]
+[ext_resource type="Script" uid="uid://c017kibbjcswa" path="res://scripts/pintu.gd" id="3_24ayb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwv75"]
 albedo_color = Color(0.357949, 0.29826, 0.247242, 1)
 metallic = 0.7
 
-[node name="gerbang1" instance=ExtResource("1_uwv75")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
+size = Vector3(1.8105469, 8.8186035, 16.293945)
 
-[node name="polySurface103_standardSurface1_0" parent="." index="0"]
+[node name="gerbang1" unique_id=731245401 instance=ExtResource("1_uwv75")]
+script = ExtResource("2_fjf6e")
+
+[node name="polySurface103_standardSurface1_0" parent="." index="0" unique_id=1841273832]
 surface_material_override/0 = SubResource("StandardMaterial3D_uwv75")
 
-[node name="polySurface170_standardSurface1_0" parent="." index="1"]
+[node name="polySurface170_standardSurface1_0" parent="." index="1" unique_id=1547639261]
 surface_material_override/0 = SubResource("StandardMaterial3D_uwv75")
 
-[node name="polySurface175_standardSurface1_0" parent="." index="2"]
+[node name="polySurface175_standardSurface1_0" parent="." index="2" unique_id=1819183747]
 surface_material_override/0 = SubResource("StandardMaterial3D_uwv75")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3" unique_id=1970709133]
+script = ExtResource("3_24ayb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=973484376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4603696, 0)
+shape = SubResource("BoxShape3D_rekel")

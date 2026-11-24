@@ -3,6 +3,7 @@ extends Node
 var punya_linggis: bool = false
 var punya_kunci_resepsionis: bool = false
 var punya_kunci_gerbang: bool = false
+var punya_kunci_ruangan: bool = false
 var punya_foto_rahasia: bool = false
 
 var jumlah_soal: int = 0

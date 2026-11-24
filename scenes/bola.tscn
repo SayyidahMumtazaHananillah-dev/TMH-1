@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://cvuacqyegxlvu"]
 
+[ext_resource type="Script" uid="uid://bbeq725v5yeqs" path="res://scripts/bola.gd" id="1_372x7"]
 [ext_resource type="PackedScene" uid="uid://b0fiw7tm8nh0i" path="res://assets/models/soccer_ball.glb" id="1_fdx0f"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rekel"]
 radius = 1.0
 
 [node name="bola" type="StaticBody3D" unique_id=1977775333]
+script = ExtResource("1_372x7")
 
 [node name="Sketchfab_Scene" parent="." unique_id=897653085 instance=ExtResource("1_fdx0f")]
 

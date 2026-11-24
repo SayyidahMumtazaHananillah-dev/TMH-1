@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://poujr6m8b8cb"]
 
 [ext_resource type="PackedScene" uid="uid://dmuq0vugxq7p8" path="res://assets/models/crowbar.glb" id="1_a436d"]
+[ext_resource type="Script" uid="uid://cmk2npgx3rxmt" path="res://scripts/crowbar.gd" id="1_ax20u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
 size = Vector3(0.087646484, 1, 0.18847656)
 
 [node name="crowbar" type="StaticBody3D" unique_id=1932982477]
+script = ExtResource("1_ax20u")
 
 [node name="Sketchfab_Scene" parent="." unique_id=249809266 instance=ExtResource("1_a436d")]
 
