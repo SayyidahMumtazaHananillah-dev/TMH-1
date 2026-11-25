@@ -1711,7 +1711,7 @@ script = SubResource("GDScript_4w656")
 
 [node name="Guru" parent="." unique_id=151006125 instance=ExtResource("54_n8b7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.902, 0, 0)
-nonaktif_saat_tes = true
+script = null
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1619006195]
 script = ExtResource("54_6iyjs")
