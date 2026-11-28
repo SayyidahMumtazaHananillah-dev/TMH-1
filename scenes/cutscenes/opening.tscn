@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://cibiwplujedsu"]
 
-[ext_resource type="Script" path="res://scripts/opening.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://scenes/cutscenes/assets/background_siang.png" id="2_bg"]
-[ext_resource type="Texture2D" path="res://scenes/cutscenes/assets/guru_diam.png" id="3_guru"]
-[ext_resource type="Texture2D" path="res://scenes/cutscenes/assets/nobma_tegak_biasa.png" id="4_nobma"]
+[ext_resource type="Script" uid="uid://dn0paxg4akhuh" path="res://scripts/opening.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cc2o6whl3cdbv" path="res://scenes/cutscenes/assets/background_siang.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://baw3phq8k5udx" path="res://scenes/cutscenes/assets/guru_diam.png" id="3_guru"]
+[ext_resource type="Texture2D" uid="uid://bvju2671j2h22" path="res://scenes/cutscenes/assets/nobma_tegak_biasa.png" id="4_nobma"]
+[ext_resource type="AudioStream" uid="uid://bgstuftoaewos" path="res://assets/sfx/e-orchestral-whimsical-fantasy-outro-with-pizzicato-633253.mp3" id="5_glq3f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialog"]
 bg_color = Color(0.05, 0.06, 0.1, 0.82)
@@ -17,7 +18,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="Opening" type="Control"]
+[node name="Opening" type="Control" unique_id=651062850]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,9 +26,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
-next_scene_path = ""
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=452237520]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +39,7 @@ texture = ExtResource("2_bg")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Guru" type="TextureRect" parent="."]
+[node name="Guru" type="TextureRect" parent="." unique_id=148468666]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -48,7 +48,7 @@ texture = ExtResource("3_guru")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Nobma" type="TextureRect" parent="."]
+[node name="Nobma" type="TextureRect" parent="." unique_id=618875054]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -57,23 +57,19 @@ texture = ExtResource("4_nobma")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="DialogBox" type="PanelContainer" parent="."]
+[node name="DialogBox" type="PanelContainer" parent="." unique_id=264728770]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = -1
 anchor_left = 0.04
 anchor_top = 0.8
 anchor_right = 0.96
 anchor_bottom = 0.97
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dialog")
 
-[node name="Margin" type="MarginContainer" parent="DialogBox"]
+[node name="Margin" type="MarginContainer" parent="DialogBox" unique_id=801929678]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 32
@@ -81,19 +77,19 @@ theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 18
 
-[node name="VBox" type="VBoxContainer" parent="DialogBox/Margin"]
+[node name="VBox" type="VBoxContainer" parent="DialogBox/Margin" unique_id=699930755]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="NameLabel" type="Label" parent="DialogBox/Margin/VBox"]
+[node name="NameLabel" type="Label" parent="DialogBox/Margin/VBox" unique_id=1051915708]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.88, 0.5, 1)
 theme_override_font_sizes/font_size = 22
 text = "Nama"
 
-[node name="TextLabel" type="Label" parent="DialogBox/Margin/VBox"]
+[node name="TextLabel" type="Label" parent="DialogBox/Margin/VBox" unique_id=1467345055]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -101,7 +97,7 @@ theme_override_font_sizes/font_size = 20
 text = "Teks dialog"
 autowrap_mode = 3
 
-[node name="Fade" type="ColorRect" parent="."]
+[node name="Fade" type="ColorRect" parent="." unique_id=780113120]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,3 +106,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=610888823]
+stream = ExtResource("5_glq3f")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

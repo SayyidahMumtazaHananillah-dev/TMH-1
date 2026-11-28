@@ -1,7 +1,7 @@
 extends Control
 
 # Isi dengan scene gameplay-mu (bisa juga diisi lewat Inspector).
-@export_file("*.tscn") var game_scene: String = "res://scenes/main-menu/loading.tscn"
+@export_file("*.tscn") var game_scene: String = "res://scenes/cutscenes/opening.tscn"
 
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 @onready var open_sound: AudioStreamPlayer = $OpenSound

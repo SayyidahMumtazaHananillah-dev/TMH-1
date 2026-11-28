@@ -1,5 +1,7 @@
 extends Node3D
 
+var jenis_item: String = "kunci_gerbang"
+
 var _sedang_dipegang: bool = false
 var _pemegang: Node = null
 var _kecepatan_lempar: Vector3 = Vector3.ZERO

@@ -157,6 +157,7 @@ func _coba_interaksi() -> void:
 		while target:
 			if target.has_method("interact"):
 				var terbuka_sebelum = target.get("sudah_terbuka")
+				print("DEBUG INTERACT -> node: ", target.name, " | script: ", target.get_script().resource_path if target.get_script() else "(tanpa script)", " | punya_kunci_gerbang: ", GameManager.punya_kunci_gerbang)
 				target.interact()
 				_mainkan_suara_pintu(target, terbuka_sebelum)
 				found = true

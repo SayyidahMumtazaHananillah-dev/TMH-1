@@ -1,15 +1,10 @@
 extends Node3D
 
-@export var durasi_matikan: float = 1.5
-@export var interval_bunyi_ulang: float = 2.0
-@export var sfx_alarm: AudioStream
+var sfx_alarm: AudioStream = preload("res://assets/sfx/microsammy-clock-alarm-8761.mp3")
 
 var _sedang_dipegang: bool = false
-var _alarm_aktif: bool = false
 var _pemegang: Node = null
-var _timer_matikan: float = 0.0
-var _sedang_tahan_matikan: bool = false
-var _timer_bunyi_ulang: float = 0.0
+var _sudah_bunyi: bool = false   # alarm cuma bisa bunyi 1x seumur hidup
 var _audio_player: AudioStreamPlayer3D
 
 var _kecepatan_lempar: Vector3 = Vector3.ZERO
@@ -19,6 +14,9 @@ func _ready() -> void:
 	_audio_player = AudioStreamPlayer3D.new()
 	if sfx_alarm:
 		_audio_player.stream = sfx_alarm
+	_audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_DISTANCE
+	_audio_player.unit_size = 5.0     # makin kecil = makin cepat samar
+	_audio_player.max_distance = 40.0 # lebih jauh dari ini suara hilang
 	add_child(_audio_player)
 
 func interact() -> void:
@@ -39,57 +37,32 @@ func _aktifkan_ke_tangan(player: Node) -> void:
 	_sedang_dipegang = true
 	_sedang_terlempar = false
 	_kecepatan_lempar = Vector3.ZERO
-	_alarm_aktif = true
 	_pemegang = player
-	_timer_matikan = 0.0
-	_sedang_tahan_matikan = false
-	_timer_bunyi_ulang = interval_bunyi_ulang
 	_set_collision_aktif(false)
 
 	if player.has_method("pegang_item"):
 		player.pegang_item(self, "alarm")
 
-	_picu_bunyi_alarm()
-	print("🚨 TRAP ALARM! Otomatis bunyi! Tahan F (%.1fs) untuk mematikan alarm, atau E untuk lempar!" % durasi_matikan)
+	# Bunyi cuma pas pertama kali diambil. Kalau sudah pernah, diam saja.
+	if not _sudah_bunyi:
+		_sudah_bunyi = true
+		_picu_bunyi_alarm()
+		print("🚨 TRAP ALARM! Bunyi sekali sampai habis!")
 
 func _physics_process(delta: float) -> void:
 	if _sedang_terlempar:
 		_proses_jatuh_lempar(delta)
-		return
 
 	if not _sedang_dipegang:
 		return
 
-	# Kalau item dilempar lewat E dari player, lepaskan alarm & hentikan suara
+	# Kalau item dilempar lewat E dari player, lepaskan alarm (suara tetap lanjut)
 	if is_instance_valid(_pemegang) and "item_dipegang" in _pemegang and _pemegang.item_dipegang != self:
 		_lepas_paksa()
-		return
-
-	if _alarm_aktif:
-		_timer_bunyi_ulang -= delta
-		if _timer_bunyi_ulang <= 0.0:
-			_timer_bunyi_ulang = interval_bunyi_ulang
-			_picu_bunyi_alarm()
-
-		# Tahan F selama 1.5 detik untuk mematikan alarm
-		if Input.is_key_pressed(KEY_F):
-			_sedang_tahan_matikan = true
-			_timer_matikan += delta
-			if _timer_matikan >= durasi_matikan:
-				_matikan_alarm()
-		else:
-			if _sedang_tahan_matikan:
-				_sedang_tahan_matikan = false
-				_timer_matikan = 0.0
 
 func terima_lemparan(impuls: Vector3, _pelempar: Node3D) -> void:
-	_alarm_aktif = false
 	_sedang_dipegang = false
-	_sedang_tahan_matikan = false
-	_timer_matikan = 0.0
 	_pemegang = null
-	if _audio_player and _audio_player.playing:
-		_audio_player.stop()
 
 	_sedang_terlempar = true
 	_kecepatan_lempar = impuls
@@ -139,8 +112,7 @@ func _proses_jatuh_lempar(delta: float) -> void:
 
 func _picu_bunyi_alarm() -> void:
 	if _audio_player and _audio_player.stream:
-		if not _audio_player.playing:
-			_audio_player.play()
+		_audio_player.play()
 
 	var posisi_suara := global_position
 	if is_instance_valid(_pemegang) and _pemegang is Node3D:
@@ -151,36 +123,9 @@ func _picu_bunyi_alarm() -> void:
 	if guru and guru.has_method("dengar_alarm"):
 		guru.dengar_alarm(posisi_suara)
 
-func _matikan_alarm() -> void:
-	_alarm_aktif = false
-	_sedang_dipegang = false
-	_sedang_tahan_matikan = false
-	_timer_matikan = 0.0
-
-	if _audio_player and _audio_player.playing:
-		_audio_player.stop()
-
-	if is_instance_valid(_pemegang):
-		if "item_dipegang" in _pemegang and _pemegang.item_dipegang == self:
-			_pemegang.item_dipegang = null
-		if "_tipe_item_dipegang" in _pemegang:
-			_pemegang._tipe_item_dipegang = ""
-		if "_sedang_tahan_store" in _pemegang:
-			_pemegang._sedang_tahan_store = false
-		if "_timer_store" in _pemegang:
-			_pemegang._timer_store = 0.0
-
-	print("🔇 Alarm berhasil dimatikan dan dilepas!")
-	queue_free()
-
 func _lepas_paksa() -> void:
-	_alarm_aktif = false
 	_sedang_dipegang = false
-	_sedang_tahan_matikan = false
-	_timer_matikan = 0.0
 	_pemegang = null
-	if _audio_player and _audio_player.playing:
-		_audio_player.stop()
 	_set_collision_aktif(true)
 
 func _set_collision_aktif(aktif: bool) -> void:

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bc6kv80006pgp" path="res://assets/models/alarm_clock.glb" id="1_60k40"]
 [ext_resource type="Script" uid="uid://cgku8f4e2ird6" path="res://scripts/alarm.gd" id="1_y63g5"]
+[ext_resource type="AudioStream" uid="uid://cfgiljduqtkp8" path="res://assets/sfx/microsammy-clock-alarm-8761.mp3" id="3_aj4iq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rekel"]
 size = Vector3(0.14624023, 0.18359375, 0.087890625)
@@ -14,3 +15,6 @@ script = ExtResource("1_y63g5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=990425939]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08305271, 0.0043336153)
 shape = SubResource("BoxShape3D_rekel")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=753024800]
+stream = ExtResource("3_aj4iq")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://01vf7cqq5ghf"]
 
 [ext_resource type="PackedScene" uid="uid://byci2d103bwyh" path="res://scenes/lantai.tscn" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://csop4cmhegfn6" path="res://scenes/main-map/main.gd" id="1_dk204"]
 [ext_resource type="PackedScene" uid="uid://1lw71gafd7dm" path="res://scenes/bunga.tscn" id="2_d2t1y"]
 [ext_resource type="PackedScene" uid="uid://cgo1b7mtm0hb1" path="res://scenes/lantai_aspal.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://tcsaegcx0ogi" path="res://scenes/lantai_lapangan.tscn" id="3_7mycd"]
@@ -63,6 +64,7 @@
 [ext_resource type="PackedScene" uid="uid://cudpu5ksymbt8" path="res://scenes/sapu.tscn" id="60_f7cpi"]
 [ext_resource type="PackedScene" uid="uid://poujr6m8b8cb" path="res://scenes/crowbar.tscn" id="61_6s0ug"]
 [ext_resource type="PackedScene" uid="uid://ccg13q61dimps" path="res://scenes/kunci_ruangan.tscn" id="62_dk204"]
+[ext_resource type="AudioStream" uid="uid://bt2cfwnvdj43m" path="res://assets/sfx/freesound_community-night-ambience-17064.mp3" id="65_g5u2u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bx8n8"]
 size = Vector3(4.15527, 4.09094, 9.05591)
@@ -74,6 +76,10 @@ size = Vector3(0.243652, 2.98279, 3.41803)
 script/source = "extends Node3D
 
 @export var nomor_pintu: int = 1
+@export_file(\"*.tscn\") var scene_ending: String = \"res://scenes/cutscenes/ending.tscn\"
+@export var durasi_gelap: float = 1.5
+@export var durasi_terang: float = 1.0
+
 var sudah_terbuka: bool = false
 var _sedang_gerak: bool = false
 var _rotasi_awal: float = 0.0
@@ -86,6 +92,8 @@ func interact() -> void:
 		return
 
 	if sudah_terbuka:
+		if nomor_pintu == 3:
+			return  # gerbang tidak bisa ditutup lagi
 		_tutup_pintu()
 		return
 
@@ -117,6 +125,11 @@ func _buka_pintu() -> void:
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.finished.connect(func(): _sedang_gerak = false)
 
+	# Gerbang: setelah terbuka -> layar gelap -> scene ending
+	if nomor_pintu == 3:
+		await tween.finished
+		_transisi_ke_ending()
+
 func _tutup_pintu() -> void:
 	sudah_terbuka = false
 	_sedang_gerak = true
@@ -125,6 +138,31 @@ func _tutup_pintu() -> void:
 	tween.tween_property(self, \"rotation_degrees:y\", _rotasi_awal, 0.8) \\
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.finished.connect(func(): _sedang_gerak = false)
+
+func _transisi_ke_ending() -> void:
+	var layer := CanvasLayer.new()
+	layer.layer = 100
+	get_tree().root.add_child(layer)
+
+	var overlay := ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0)
+	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	layer.add_child(overlay)
+
+	# Fade ke hitam
+	var fade_out := create_tween()
+	fade_out.tween_property(overlay, \"color:a\", 1.0, durasi_gelap)
+	await fade_out.finished
+
+	# Fade-in di scene ending
+	var fade_in := layer.create_tween()
+	fade_in.tween_interval(0.3)
+	fade_in.tween_property(overlay, \"color:a\", 0.0, durasi_terang)
+	fade_in.tween_callback(layer.queue_free)
+
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_file(scene_ending)
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_5h11f"]
@@ -144,6 +182,7 @@ fog_enabled = true
 volumetric_fog_density = 0.0211
 
 [node name="Main" type="Node3D" unique_id=330867278]
+script = ExtResource("1_dk204")
 
 [node name="Player" parent="." unique_id=385739996 groups=["player"] instance=ExtResource("45_0n3wm")]
 transform = Transform3D(0.66386104, 0, 0, 0, 0.66386104, 0, 0, 0, 0.66386104, 1.35107, 0.8759451, -7.45827)
@@ -749,6 +788,9 @@ transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -5.939
 
 [node name="dindingPutih23" parent="Env" unique_id=1950906772 instance=ExtResource("8_dg77c")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.02988, 0.489104, -51.12)
+
+[node name="dindingPutih59" parent="Env" unique_id=617116919 instance=ExtResource("8_dg77c")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.02988, 0.489104, -49.53917)
 
 [node name="dindingPutih28" parent="Env" unique_id=163490249 instance=ExtResource("8_dg77c")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.02988, 0.489104, -55.12)
@@ -1710,7 +1752,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.127
 script = SubResource("GDScript_4w656")
 
 [node name="Guru" parent="." unique_id=151006125 instance=ExtResource("54_n8b7y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.902, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.760235, 0.16268283, -0.46248507)
 script = null
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1619006195]
@@ -1773,7 +1815,7 @@ transform = Transform3D(0.0065643652, -0.023980236, -0.032887455, 0.04060472, 0.
 transform = Transform3D(0.039453577, 0, 0, 0, 0.039453577, 0, 0, 0, 0.039453577, -3.653346, 0.31488955, -66.48316)
 
 [node name="kunci_gerbang" parent="item" unique_id=1305920367 instance=ExtResource("59_f7cpi")]
-transform = Transform3D(-0.00038401858, 0.5346128, -0.08490913, -0.54104584, -0.0030495992, -0.016754182, -0.01702513, 0.08485524, 0.5343504, -2.22045, 0.93734074, -13.032542)
+transform = Transform3D(-0.00038401858, 0.5346128, -0.08490913, -0.54104584, -0.0030495992, -0.016754182, -0.01702513, 0.08485524, 0.5343504, -2.2405057, 0.93734074, -13.032542)
 
 [node name="ItemSpawnPoints" type="Node" parent="." unique_id=1778796117]
 
@@ -1942,3 +1984,9 @@ script = ExtResource("56_n8b7y")
 scene_kertas_soal = ExtResource("59_rqgha")
 scene_crowbar = ExtResource("61_6s0ug")
 scene_kunci_perpus = ExtResource("62_dk204")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=523407362]
+stream = ExtResource("65_g5u2u")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

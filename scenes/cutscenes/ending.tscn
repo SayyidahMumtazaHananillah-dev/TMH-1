@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://ccjtk434wf3dx"]
+
+[ext_resource type="Script" uid="uid://r8fnn7w5cfc3" path="res://scripts/ending.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b7x1uwe028gjt" path="res://scenes/cutscenes/assets/background_gerbang.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://bvju2671j2h22" path="res://scenes/cutscenes/assets/nobma_tegak_biasa.png" id="3_nobma"]
+[ext_resource type="FontFile" uid="uid://3klkipxnn08t" path="res://scenes/main-menu/asset/font/chinese_rocks/chinese rocks rg.otf" id="4_x0u51"]
+[ext_resource type="AudioStream" uid="uid://cmr57cr6d2454" path="res://assets/sfx/soulfuljamtracks-happy-music-loop-500008.mp3" id="5_dg2dk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialog"]
+bg_color = Color(0.05, 0.06, 0.1, 0.82)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85, 0.9, 1, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Ending" type="Control" unique_id=1709777233]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2019479050]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Nobma" type="TextureRect" parent="." unique_id=827064169]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("3_nobma")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DialogBox" type="PanelContainer" parent="." unique_id=901448463]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.8
+anchor_right = 0.96
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dialog")
+
+[node name="Margin" type="MarginContainer" parent="DialogBox" unique_id=668013060]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="DialogBox/Margin" unique_id=1805078668]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="DialogBox/Margin/VBox" unique_id=1459398589]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.5, 1)
+theme_override_font_sizes/font_size = 22
+text = "Nama"
+
+[node name="TextLabel" type="Label" parent="DialogBox/Margin/VBox" unique_id=1850732408]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Teks dialog"
+autowrap_mode = 3
+
+[node name="Fade" type="ColorRect" parent="." unique_id=878338137]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TitleLabel" type="Label" parent="." unique_id=2140910979]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.45, 1)
+theme_override_colors/font_outline_color = Color(0.25, 0.15, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_x0u51")
+theme_override_font_sizes/font_size = 90
+text = "GOOD ENDING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HintLabel" type="Label" parent="." unique_id=274548760]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Klik atau tekan Enter untuk kembali ke Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2140909217]
+stream = ExtResource("5_dg2dk")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

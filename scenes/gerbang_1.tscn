@@ -14,17 +14,18 @@ size = Vector3(1.8105469, 8.8186035, 16.293945)
 [node name="gerbang1" unique_id=731245401 instance=ExtResource("1_uwv75")]
 script = ExtResource("2_fjf6e")
 
-[node name="polySurface103_standardSurface1_0" parent="." index="0" unique_id=1841273832]
+[node name="polySurface103_standardSurface1_0" parent="." index="0" unique_id=1214938925]
 surface_material_override/0 = SubResource("StandardMaterial3D_uwv75")
 
-[node name="polySurface170_standardSurface1_0" parent="." index="1" unique_id=1547639261]
+[node name="polySurface170_standardSurface1_0" parent="." index="1" unique_id=123985682]
 surface_material_override/0 = SubResource("StandardMaterial3D_uwv75")
 
-[node name="polySurface175_standardSurface1_0" parent="." index="2" unique_id=1819183747]
+[node name="polySurface175_standardSurface1_0" parent="." index="2" unique_id=1751849826]
 surface_material_override/0 = SubResource("StandardMaterial3D_uwv75")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="3" unique_id=1970709133]
 script = ExtResource("3_24ayb")
+nomor_pintu = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=973484376]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4603696, 0)

@@ -8,6 +8,13 @@ const NOBMA := "nobma"
 const GURU := "guru"
 const NARASI := "narasi"
 
+# --- Tujuan setelah cutscene selesai (ganti sesuai path-mu) ---
+const GAMEPLAY_SCENE := "res://scenes/main-map/main.tscn"
+const LOADING_SCENE := "res://scenes/main-menu/loading.tscn"   # lokasi scene loading (samakan dengan project-mu)
+const LOADING_META_KEY := "loading_target"     # harus sama dengan META_KEY di script loading
+const USE_LOADING_SCREEN := true               # true = lewat loading bar dulu sebelum gameplay
+
+## Kalau diisi di Inspector, menimpa GAMEPLAY_SCENE. Kalau kosong, pakai GAMEPLAY_SCENE.
 @export_file("*.tscn") var next_scene_path: String = ""
 
 @export_group("Fokus Pembicara")
@@ -254,17 +261,30 @@ func _do_transition(step: Dictionary) -> void:
 	await _fade_to(0.0, fade_time)
 
 
+## Dipanggil setelah dialog terakhir: fade ke hitam, lalu lanjut ke gameplay
+## (langsung, atau lewat loading screen kalau USE_LOADING_SCREEN = true).
 func _finish_cutscene() -> void:
 	_kill(_type_tween)
 	_typing = false
 	await _fade_to(1.0, fade_time)
-	if next_scene_path.is_empty():
-		push_warning("opening.gd: next_scene_path kosong. Isi di Inspector (node Opening).")
+
+	# next_scene_path di Inspector menimpa GAMEPLAY_SCENE kalau diisi
+	var target := next_scene_path if not next_scene_path.is_empty() else GAMEPLAY_SCENE
+
+	if not ResourceLoader.exists(target):
+		push_error("opening.gd: scene tujuan tidak ditemukan: %s" % target)
 		return
-	if not ResourceLoader.exists(next_scene_path):
-		push_error("opening.gd: scene tujuan tidak ditemukan: %s" % next_scene_path)
-		return
-	get_tree().change_scene_to_file(next_scene_path)
+
+	# Alur: opening -> loading -> gameplay.
+	# Loading TIDAK boleh diam-diam dilewati; kalau path-nya salah, tampilkan error.
+	if USE_LOADING_SCREEN:
+		if not ResourceLoader.exists(LOADING_SCENE):
+			push_error("opening.gd: scene loading tidak ditemukan: %s. Cek LOADING_SCENE (klik kanan scene > Copy Path)." % LOADING_SCENE)
+			return
+		get_tree().root.set_meta(LOADING_META_KEY, target)
+		get_tree().change_scene_to_file(LOADING_SCENE)
+	else:
+		get_tree().change_scene_to_file(target)
 
 
 # ------------------------------------------------------------- Typewriter ---
@@ -423,3 +443,7 @@ func _fade_to(alpha: float, duration: float) -> void:
 func _kill(t: Tween) -> void:
 	if t != null and t.is_valid():
 		t.kill()
+
+
+func _on_audio_stream_player_finished() -> void:
+	$AudioStreamPlayer.play()
